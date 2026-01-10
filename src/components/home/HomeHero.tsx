@@ -8,23 +8,37 @@ export function HomeHero() {
       <div className="grid gap-12 md:grid-cols-2 md:items-center">
         <div className="space-y-6">
           <h1 className="text-4xl font-semibold text-slate-900 sm:text-5xl">
-            Invest in a future where everyone has a place to belong.
+            Multifamily Real Estate Investing with Purpose
           </h1>
           <p className="max-w-3xl text-lg text-slate-600">
-            At Callaloo Ventures, we believe real estate is more than buildings — it&apos;s stability, dignity, and the foundation of a good life. Your investment helps create homes where families can plant roots, grow, and thrive.
+            Building quality housing portfolios while creating lasting community impact. We invest in multifamily properties that provide stability, dignity, and opportunity for residents while delivering value for investors.
           </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="grid gap-4 sm:grid-cols-3 pt-4">
+            <div className="space-y-1">
+              <p className="text-sm font-medium text-slate-500">Portfolio Focus</p>
+              <p className="text-lg font-semibold text-slate-900">Multifamily Properties</p>
+            </div>
+            <div className="space-y-1">
+              <p className="text-sm font-medium text-slate-500">Primary Market</p>
+              <p className="text-lg font-semibold text-slate-900">Cincinnati</p>
+            </div>
+            <div className="space-y-1">
+              <p className="text-sm font-medium text-slate-500">Investment Approach</p>
+              <p className="text-lg font-semibold text-slate-900">Value-Add & Stabilized</p>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-4 pt-4">
             <Link
-              href="/contact"
+              href="/contact?type=investor"
               className="rounded-full bg-slate-900 px-6 py-3 text-white transition hover:bg-slate-700"
             >
-              Start a conversation
+              Explore Investment Opportunities
             </Link>
             <Link
-              href="/about-company"
+              href="/portfolio"
               className="rounded-full border border-slate-300 px-6 py-3 text-slate-900 transition hover:border-slate-900"
             >
-              Explore Callaloo Ventures
+              View Portfolio
             </Link>
           </div>
         </div>

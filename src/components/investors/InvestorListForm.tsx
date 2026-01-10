@@ -9,6 +9,7 @@ export function InvestorListForm() {
     fullName: "",
     email: "",
     phone: "",
+    referralSource: "",
     message: "",
   });
 
@@ -32,7 +33,7 @@ export function InvestorListForm() {
     
     // Reset form after success
     setTimeout(() => {
-      setFormData({ fullName: "", email: "", phone: "", message: "" });
+      setFormData({ fullName: "", email: "", phone: "", referralSource: "", message: "" });
       setSubmitStatus("idle");
     }, 3000);
   };
@@ -57,7 +58,7 @@ export function InvestorListForm() {
             Connect with Callaloo Ventures
           </h1>
           <p className="max-w-3xl text-lg text-slate-600">
-            Interested in learning more about investment opportunities? Join our investor list to receive updates and connect with our team.
+            Join our investor network to receive updates and connect about opportunities. We&apos;ll respond within 24-48 hours to start building a relationship.
           </p>
         </div>
 
@@ -120,6 +121,23 @@ export function InvestorListForm() {
           </div>
           <div className="space-y-2">
             <label
+              htmlFor="referralSource"
+              className="text-sm font-medium text-slate-900"
+            >
+              How did you hear about us? <span className="text-slate-500">(optional)</span>
+            </label>
+            <input
+              id="referralSource"
+              name="referralSource"
+              type="text"
+              value={formData.referralSource}
+              onChange={handleChange}
+              className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none ring-slate-900/10 focus:ring-2"
+              placeholder="Friend, website, event, etc."
+            />
+          </div>
+          <div className="space-y-2">
+            <label
               htmlFor="message"
               className="text-sm font-medium text-slate-900"
             >
@@ -145,7 +163,7 @@ export function InvestorListForm() {
           {submitStatus === "success" && (
             <div className="rounded-2xl bg-green-50 border border-green-200 p-4 text-green-800">
               <p className="font-medium">Thank you!</p>
-              <p className="text-sm">We&apos;ll be in touch soon.</p>
+              <p className="text-sm">We&apos;ll respond within 24-48 hours to start building a relationship and discuss next steps.</p>
             </div>
           )}
         </form>

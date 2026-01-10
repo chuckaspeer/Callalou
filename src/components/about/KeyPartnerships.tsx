@@ -23,10 +23,10 @@ export function KeyPartnerships() {
           Key Partnerships
         </p>
         <h2 className="text-3xl font-semibold text-slate-900">
-          Strategic alliances that amplify our impact.
+          Strategic partnerships that support our operations.
         </h2>
         <p className="text-slate-600">
-          We collaborate with organizations and institutions that share our commitment to creating dignified housing and building community wealth.
+          We collaborate with organizations and institutions that support our multifamily operations, helping us deliver quality housing and strong investment performance.
         </p>
       </div>
       <div className="grid gap-6 pt-6 md:grid-cols-3">

@@ -8,11 +8,10 @@ export function InvestorLoginForm() {
           Investor Portal
         </p>
         <h1 className="text-3xl font-semibold text-white">
-          Access deal rooms and quarterly updates.
+          Access your investor dashboard
         </h1>
         <p className="text-white/80">
-          Accredited investors can request or log into their secure workspace
-          below. Two-factor authentication is required for all sessions.
+          For accredited investors with existing relationships. Two-factor authentication is required for all sessions.
         </p>
       </div>
       <form className="space-y-4">
@@ -47,12 +46,17 @@ export function InvestorLoginForm() {
         >
           Sign in
         </button>
-        <button
-          type="button"
-          className="w-full text-sm font-semibold text-white/80 underline-offset-4 hover:underline"
-        >
-          Request access
-        </button>
+        <div className="space-y-2">
+          <button
+            type="button"
+            className="w-full text-sm font-semibold text-white/80 underline-offset-4 hover:underline"
+          >
+            Request access
+          </button>
+          <p className="text-xs text-white/60 text-center">
+            Don&apos;t have access? <a href="/contact?type=investor" className="underline hover:text-white/80">Contact us to start a conversation</a>
+          </p>
+        </div>
       </form>
       <ComplianceNotice />
     </div>

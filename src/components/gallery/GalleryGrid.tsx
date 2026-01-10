@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Section } from "@/components/layout/Section";
 
 const galleryImages = [
@@ -29,13 +30,13 @@ export function GalleryGrid() {
     <Section>
       <div className="space-y-4">
         <p className="text-sm uppercase tracking-[0.3em] text-slate-500">
-          Property Gallery
+          Portfolio Properties
         </p>
         <h2 className="text-3xl font-semibold text-slate-900">
           Quality homes for quality living.
         </h2>
         <p className="text-slate-600">
-          Explore our portfolio of thoughtfully designed and well-maintained properties.
+          Explore our portfolio of thoughtfully designed and well-maintained multifamily properties. Each property reflects our commitment to operational excellence and quality housing standards.
         </p>
       </div>
       <div className="grid gap-6 pt-6 sm:grid-cols-2 md:grid-cols-3">
@@ -58,6 +59,14 @@ export function GalleryGrid() {
             </div>
           </div>
         ))}
+      </div>
+      <div className="pt-6">
+        <Link
+          href="/portfolio"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-slate-900"
+        >
+          View Full Portfolio Details →
+        </Link>
       </div>
     </Section>
   );

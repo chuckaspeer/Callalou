@@ -5,17 +5,17 @@ export function ContentIntro() {
     <Section>
       <div className="space-y-6">
         <p className="text-sm uppercase tracking-[0.3em] text-slate-500">
-          Content Hub
+          Media Hub
         </p>
         <h1 className="text-4xl font-semibold text-slate-900">
-          Learn from the journey: From Antigua to Cincinnati, building wealth with purpose.
+          Insights on Multifamily Real Estate Investing
         </h1>
         <div className="max-w-3xl space-y-4 text-slate-600">
           <p>
-            This content hub reflects the &quot;Burn the Boats&quot; philosophy — a commitment to bold action, decisive leadership, and full belief in the path ahead. Here you&apos;ll find YouTube videos, articles, market insights, and educational content that share Emil&apos;s immigrant story and community-focused approach to real estate investing.
+            Our media hub features educational content, market insights, and operational strategies for multifamily real estate investing. Learn about our approach to building quality housing portfolios while creating community impact.
           </p>
           <p>
-            Our content emphasizes the purpose-driven, heritage-rooted alternative to traditional real estate investors — combining where we come from with where we&apos;re going, investing with purpose and creating wealth with integrity.
+            Content includes videos, articles, and educational resources that balance operational insights with the purpose-driven approach that differentiates Callaloo Ventures in the multifamily real estate space.
           </p>
         </div>
       </div>

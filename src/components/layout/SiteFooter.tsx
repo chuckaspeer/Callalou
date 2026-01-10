@@ -2,10 +2,10 @@ import Link from "next/link";
 import { ComplianceNotice } from "./ComplianceNotice";
 
 const quickLinks = [
-  { href: "/about", label: "About Emil" },
-  { href: "/about-company", label: "About Company" },
-  { href: "/philosophy", label: "Philosophy" },
-  { href: "/content", label: "Content" },
+  { href: "/about", label: "About" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/media", label: "Media" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -18,11 +18,10 @@ export function SiteFooter() {
             Callaloo Ventures
           </p>
           <h3 className="text-2xl font-semibold">
-            Investing in a future where everyone has a place to belong.
+            Multifamily Real Estate Investing with Purpose
           </h3>
           <p className="text-sm text-slate-300">
-            Story-first capital, cultural intelligence, and patient conviction
-            for underrepresented operators building enduring communities.
+            Building quality housing portfolios while creating lasting community impact. We combine operational excellence with purpose-driven investment to deliver value for investors and residents.
           </p>
           <div className="flex gap-4 text-sm text-slate-300">
             <Link href="mailto:hello@callalouventures.com">

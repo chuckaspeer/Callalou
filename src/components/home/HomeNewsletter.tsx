@@ -6,13 +6,13 @@ export function HomeNewsletter() {
       <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div className="space-y-3">
           <p className="text-sm uppercase tracking-[0.3em] text-slate-500">
-            Stay connected
+            Investor Updates
           </p>
           <h2 className="text-3xl font-semibold text-slate-900">
-            Get Belonging Field Notes
+            Stay Informed on Multifamily Opportunities
           </h2>
           <p className="text-slate-600">
-            No spam, just updates. Join our email list to receive insights on real estate investing, community building, and the philosophy behind Callaloo Ventures. We&apos;re building this list now — you don&apos;t need a newsletter yet, just a place to capture names.
+            Join our investor network to receive updates on portfolio performance, market insights, and investment opportunities. Get insights on multifamily real estate trends and operational strategies.
           </p>
         </div>
         <form className="flex w-full flex-col gap-3 md:max-w-md md:flex-row">

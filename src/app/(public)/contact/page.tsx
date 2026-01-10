@@ -1,9 +1,12 @@
-import { ContactForm } from "@/components/contact/ContactForm";
+import { Suspense } from "react";
+import { ContactFormWrapper } from "@/components/contact/ContactFormWrapper";
 
 export default function ContactPage() {
   return (
     <div className="space-y-16">
-      <ContactForm />
+      <Suspense fallback={<div>Loading...</div>}>
+        <ContactFormWrapper />
+      </Suspense>
     </div>
   );
 }

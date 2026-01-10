@@ -7,29 +7,26 @@ export function HomeWhyHomeMatters() {
       <div className="grid gap-10 md:grid-cols-2 md:items-center">
         <div className="space-y-6">
           <p className="text-sm uppercase tracking-[0.3em] text-white/60">
-            Why Home Matters
+            Our Approach
           </p>
           <h2 className="text-3xl font-semibold">
-            Home is more than a roof. It&apos;s safety. It&apos;s freedom. It&apos;s possibility.
+            Quality Housing, Purposeful Operations
           </h2>
           <div className="space-y-4 text-white/80">
             <p>
-              When a person has a stable home, everything changes — their health, their work, their confidence, their future.
+              Our operational approach combines rigorous property management with a commitment to quality housing standards. We maintain properties that are clean, safe, and welcoming for all tenants.
             </p>
             <p>
-              At Callaloo Ventures, we invest in properties and communities that deserve dignity. We create homes that are clean, safe, and welcoming — for new renters, long-term tenants, and even those navigating Section 8 housing.
+              <strong className="text-white">Property Standards:</strong> We implement comprehensive maintenance protocols and quality control measures to ensure our properties meet high operational standards.
             </p>
             <p>
-              When you invest with us, you&apos;re not just building your portfolio.
+              <strong className="text-white">Tenant Relations:</strong> Our focus on responsive management and quality living environments supports tenant retention and satisfaction. We serve all tenants with dignity, including those using Section 8 housing vouchers.
+            </p>
+            <p>
+              <strong className="text-white">Community Impact:</strong> Quality housing creates stability for residents, which in turn strengthens neighborhoods and communities. This operational excellence delivers both social impact and strong investment returns.
             </p>
             <p className="text-lg font-medium">
-              You&apos;re helping someone else build their life because a roof over your head is more than shelter. It&apos;s a place to dream.
-            </p>
-            <p>
-              That&apos;s the power of home.
-            </p>
-            <p className="text-lg font-medium">
-              And that&apos;s the heart of Callaloo Ventures.
+              Purpose-driven operations that create value for investors and residents alike.
             </p>
           </div>
         </div>

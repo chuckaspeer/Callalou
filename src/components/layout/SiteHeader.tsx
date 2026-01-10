@@ -2,9 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 const navLinks = [
-  { href: "/about-company", label: "About Company" },
+  { href: "/about", label: "About" },
+  { href: "/portfolio", label: "Portfolio" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/contact", label: "Contact" },
+  { href: "/media", label: "Media" },
 ];
 
 export function SiteHeader() {
@@ -23,7 +24,7 @@ export function SiteHeader() {
             Callaloo Ventures
           </span>
           <span className="hidden text-sm font-medium text-slate-500 sm:inline">
-            Investing in belonging
+            Multifamily Real Estate Investing
           </span>
         </Link>
         <nav className="flex flex-wrap items-center gap-4 text-sm font-medium text-slate-600">
@@ -37,10 +38,10 @@ export function SiteHeader() {
             </Link>
           ))}
           <Link
-            href="/portal/login"
+            href="/contact?type=investor"
             className="rounded-full bg-slate-900 px-4 py-2 text-white transition hover:bg-slate-700"
           >
-            Join Investor List
+            Invest With Us
           </Link>
         </nav>
       </div>

@@ -7,20 +7,20 @@ export function HomeEmilIntro() {
       <div className="grid gap-10 md:grid-cols-2 md:items-center">
         <div className="space-y-6">
           <p className="text-sm uppercase tracking-[0.3em] text-slate-500">
-            From Antigua to Opportunity
+            Leadership
           </p>
           <h2 className="text-3xl font-semibold text-slate-900">
-            From Antigua to Cincinnati: building wealth with purpose, one home at a time.
+            Led by Emil Brown: Multifamily Operations with Purpose
           </h2>
           <div className="space-y-4 text-slate-600">
             <p>
-              I grew up on a small island called Antigua — a place where everyone knew your name, and where sharing, helping, and hospitality were a way of life. The warmth of that culture shaped me. It taught me that people flourish when they feel rooted, welcomed, and supported.
+              Emil Brown brings deep operational experience in multifamily real estate, with a track record of building quality housing portfolios that serve both investors and communities. His approach combines rigorous property management with a commitment to creating dignified living spaces.
             </p>
             <p>
-              Years later, when I entered real estate in Cincinnati, I saw the same truth everywhere: a home can be the turning point in someone&apos;s life. It&apos;s where stability begins and opportunity grows.
+              Rooted in Caribbean heritage and shaped by values of hospitality and community, Emil&apos;s operational philosophy emphasizes that quality housing is both a sound investment and a foundation for opportunity. This cultural perspective informs how Callaloo Ventures approaches tenant relations, property standards, and community impact.
             </p>
             <p>
-              Callaloo Ventures is my way of combining where I come from with where I&apos;m going — investing with purpose and creating wealth with integrity.
+              Under Emil&apos;s leadership, Callaloo Ventures focuses on multifamily properties that deliver strong returns while creating lasting value for residents and neighborhoods.
             </p>
           </div>
         </div>
