@@ -12,7 +12,7 @@ export function ContentIntro() {
         </h1>
         <div className="max-w-3xl space-y-4 text-slate-600">
           <p>
-            Our media hub features educational content, market insights, and operational strategies for multifamily real estate investing. Learn about our approach to building quality housing portfolios while creating community impact.
+            Our media hub shares operational insights, market perspectives, and the principles that guide how we manage multifamily properties. It&apos;s designed to help you understand our approach before we ever discuss opportunities privately.
           </p>
           <p>
             Content includes videos, articles, and educational resources that balance operational insights with the purpose-driven approach that differentiates Callaloo Ventures in the multifamily real estate space.

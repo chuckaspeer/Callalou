@@ -1,6 +1,7 @@
 import { PortfolioMetrics } from "@/components/portfolio/PortfolioMetrics";
 import { MarketOverview } from "@/components/portfolio/MarketOverview";
 import { InvestmentStrategy } from "@/components/portfolio/InvestmentStrategy";
+import { OperationalExamples } from "@/components/portfolio/OperationalExamples";
 import { BuildingShowcase } from "@/components/portfolio/BuildingShowcase";
 import { TrackRecord } from "@/components/portfolio/TrackRecord";
 import { Section } from "@/components/layout/Section";
@@ -24,6 +25,7 @@ export default function PortfolioPage() {
       <PortfolioMetrics />
       <MarketOverview />
       <InvestmentStrategy />
+      <OperationalExamples />
       <BuildingShowcase />
       <TrackRecord />
     </div>
