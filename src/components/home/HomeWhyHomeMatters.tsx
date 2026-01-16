@@ -10,7 +10,7 @@ export function HomeWhyHomeMatters() {
             Our Approach
           </p>
           <h2 className="text-3xl font-semibold">
-            Quality Housing, Purposeful Operations
+            Quality Apartments, Purposeful Operations
           </h2>
           <div className="space-y-4 text-white/80">
             <p>

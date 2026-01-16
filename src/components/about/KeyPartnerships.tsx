@@ -26,7 +26,7 @@ export function KeyPartnerships() {
           Strategic partnerships that support our operations.
         </h2>
         <p className="text-slate-600">
-          We collaborate with organizations and institutions that support our multifamily operations, helping us deliver quality housing and strong investment performance.
+          We collaborate with organizations and institutions that support our multifamily operations, helping us deliver quality apartments and strong investment performance.
         </p>
       </div>
       <div className="grid gap-6 pt-6 md:grid-cols-3">

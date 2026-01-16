@@ -18,10 +18,10 @@ export const metadata: Metadata = {
     default: "Callaloo Ventures | Multifamily Real Estate Investing",
     template: "%s | Callaloo Ventures",
   },
-  description: "Multifamily real estate investment platform focused on quality housing and community impact. Accredited investor opportunities.",
+  description: "Multifamily real estate investment platform focused on quality apartments and community impact. Accredited investor opportunities.",
   openGraph: {
     title: "Callaloo Ventures | Multifamily Real Estate Investing",
-    description: "Multifamily real estate investment platform focused on quality housing and community impact. Accredited investor opportunities.",
+    description: "Multifamily real estate investment platform focused on quality apartments and community impact. Accredited investor opportunities.",
     url: "https://callalouventures.com",
     siteName: "Callaloo Ventures",
     type: "website",

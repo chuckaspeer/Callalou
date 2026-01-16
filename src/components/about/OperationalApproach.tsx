@@ -11,7 +11,7 @@ export function OperationalApproach() {
           Multifamily Operations
         </h2>
         <p className="max-w-3xl text-slate-600">
-          Our operational approach emphasizes quality housing standards, responsive property management, and strong tenant relations to create value for both investors and residents.
+          Our operational approach emphasizes quality apartment standards, responsive property management, and strong tenant relations to create value for both investors and residents.
         </p>
         <div className="grid gap-6 pt-6 md:grid-cols-3">
           <div className="rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-sm">

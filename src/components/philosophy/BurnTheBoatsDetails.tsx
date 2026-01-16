@@ -15,7 +15,7 @@ export function BurnTheBoatsDetails() {
             <strong className="text-slate-900">In Investment Decisions:</strong> We commit fully to properties that meet our criteria, moving forward with conviction after thorough due diligence and strategic analysis.
           </p>
           <p>
-            <strong className="text-slate-900">In Operations:</strong> We build operational excellence with no retreat, maintaining high standards for property management, tenant relations, and quality housing.
+            <strong className="text-slate-900">In Operations:</strong> We build operational excellence with no retreat, maintaining high standards for property management, tenant relations, and quality apartments.
           </p>
           <p>
             <strong className="text-slate-900">In Community Impact:</strong> We invest with conviction, clarity, and purpose — transforming neighborhoods into places people are proud to call home while delivering value for investors.

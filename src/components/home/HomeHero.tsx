@@ -11,7 +11,7 @@ export function HomeHero() {
             Multifamily Real Estate Investing with Purpose
           </h1>
           <p className="max-w-3xl text-lg text-slate-600">
-            Building quality housing portfolios while creating lasting community impact. We invest in multifamily properties that provide stability, dignity, and opportunity for residents while delivering value for investors.
+            Building quality apartment portfolios while creating lasting community impact. We invest in multifamily properties that provide stability, dignity, and opportunity for residents while delivering value for investors.
           </p>
           <div className="grid gap-4 sm:grid-cols-3 pt-4">
             <div className="space-y-1">
