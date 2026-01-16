@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ComplianceNotice } from "@/components/layout/ComplianceNotice";
+// import { ComplianceNotice } from "@/components/layout/ComplianceNotice";
 import { Section } from "@/components/layout/Section";
 
 export function InvestorListForm() {
@@ -233,7 +233,7 @@ export function InvestorListForm() {
           </div>
         </div>
 
-        <ComplianceNotice />
+        {/* <ComplianceNotice /> */}
       </div>
     </Section>
   );

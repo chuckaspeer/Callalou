@@ -15,8 +15,7 @@ export function EmilStory() {
           <p className="text-lg text-slate-600">
             Emil Brown carries the spirit of Antigua&apos;s marketplaces into
             every boardroom. Raised by multigenerational matriarchs, he learned
-            early that community is the first investor. After immigrating to New
-            York, Emil blended creative strategy, civic innovation, and venture
+            early that community is the first investor. After immigrating to Cincinnati, Emil blended creative strategy, civic innovation, and venture
             experience to serve underestimated founders.
           </p>
           <p className="text-slate-600">

@@ -1,4 +1,4 @@
-import { ComplianceNotice } from "@/components/layout/ComplianceNotice";
+// import { ComplianceNotice } from "@/components/layout/ComplianceNotice";
 
 export function InvestorLoginForm() {
   return (
@@ -58,7 +58,7 @@ export function InvestorLoginForm() {
           </p>
         </div>
       </form>
-      <ComplianceNotice />
+      {/* <ComplianceNotice /> */}
     </div>
   );
 }

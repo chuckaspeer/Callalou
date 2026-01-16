@@ -33,7 +33,7 @@ export function GalleryGrid() {
           Portfolio Properties
         </p>
         <h2 className="text-3xl font-semibold text-slate-900">
-          Quality homes for quality living.
+          Quality apartments for quality living.
         </h2>
         <p className="text-slate-600">
           Explore our portfolio of thoughtfully designed and well-maintained multifamily properties. Each property reflects our commitment to operational excellence and quality housing standards.

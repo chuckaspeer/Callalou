@@ -14,11 +14,11 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-6 sm:flex-row sm:items-center sm:justify-between">
         <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/images/brand/Callalou-leaf.png"
+            src="/images/brand/newCallalooTranslogo.png"
             alt="Callaloo Ventures logo"
             width={32}
             height={32}
-            className="h-8 w-8 object-contain"
+            className="h-12 w-12 object-contain"
           />
           <span className="text-lg font-semibold tracking-tight text-slate-900">
             Callaloo Ventures

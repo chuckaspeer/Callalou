@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ComplianceNotice } from "./ComplianceNotice";
+// import { ComplianceNotice } from "./ComplianceNotice";
 
 const quickLinks = [
   { href: "/about", label: "About" },
@@ -49,7 +49,7 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-white/10 bg-slate-950">
         <div className="mx-auto max-w-6xl px-6 py-10">
-          <ComplianceNotice />
+          {/* <ComplianceNotice /> */}
           <p className="mt-6 text-xs uppercase tracking-[0.2em] text-slate-500">
             © {new Date().getFullYear()} Callaloo Ventures. All rights
             reserved.
