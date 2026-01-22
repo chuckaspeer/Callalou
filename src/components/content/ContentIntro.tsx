@@ -4,19 +4,24 @@ export function ContentIntro() {
   return (
     <Section>
       <div className="space-y-6">
-        <p className="text-sm uppercase tracking-[0.3em] text-slate-500">
-          Media Hub
-        </p>
         <h1 className="text-4xl font-semibold text-slate-900">
           Insights on Multifamily Real Estate Investing
         </h1>
         <div className="max-w-3xl space-y-4 text-slate-600">
           <p>
-            Our media hub shares operational insights, market perspectives, and the principles that guide how we manage multifamily properties. It&apos;s designed to help you understand our approach before we ever discuss opportunities privately.
+            Real estate investing isn&apos;t just about deals. It&apos;s about decisions, discipline, and long-term thinking. This media hub shares perspectives drawn from real-world multifamily experience — offering clarity on markets, strategy, and the principles that guide durable outcomes.
           </p>
-          <p>
-            Content includes videos, articles, and educational resources that balance operational insights with the purpose-driven approach that differentiates Callaloo Ventures in the multifamily real estate space.
-          </p>
+        </div>
+        <div className="max-w-3xl space-y-4 pt-6">
+          <h2 className="text-2xl font-semibold text-slate-900">
+            What You&apos;ll Find
+          </h2>
+          <ul className="list-disc space-y-2 pl-6 text-slate-600">
+            <li>Operator-level insights from hands-on experience</li>
+            <li>Market commentary grounded in context</li>
+            <li>Principles that inform sound decision-making</li>
+            <li>Reflections on housing, community, and value</li>
+          </ul>
         </div>
       </div>
     </Section>

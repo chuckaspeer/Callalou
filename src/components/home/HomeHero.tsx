@@ -8,10 +8,10 @@ export function HomeHero() {
       <div className="grid gap-12 md:grid-cols-2 md:items-center">
         <div className="space-y-6">
           <h1 className="text-4xl font-semibold text-slate-900 sm:text-5xl">
-            Multifamily Real Estate Investing with Purpose
+            A Thoughtful Approach to Multifamily Real Estate Investing
           </h1>
           <p className="max-w-3xl text-lg text-slate-600">
-            Building quality apartment portfolios while creating lasting community impact. We invest in multifamily properties that provide stability, dignity, and opportunity for residents while delivering value for investors.
+            Multifamily investing isn&apos;t about chasing deals. It&apos;s about making disciplined decisions that compound over time. Callaloo Ventures approaches real estate with a long-term lens — grounded in experience, operational understanding, and the belief that stable housing is foundational to thriving communities and durable returns.
           </p>
           <div className="grid gap-4 sm:grid-cols-3 pt-4">
             <div className="space-y-1">

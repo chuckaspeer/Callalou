@@ -7,26 +7,14 @@ export function HomeWhyHomeMatters() {
       <div className="grid gap-10 md:grid-cols-2 md:items-center">
         <div className="space-y-6">
           <p className="text-sm uppercase tracking-[0.3em] text-white/60">
-            Our Approach
+            Why This Approach Matters
           </p>
           <h2 className="text-3xl font-semibold">
-            Quality Apartments, Purposeful Operations
+            Why This Approach Matters
           </h2>
           <div className="space-y-4 text-white/80">
             <p>
-              Our operational approach combines rigorous property management with a commitment to quality housing standards. We maintain properties that are clean, safe, and welcoming for all tenants.
-            </p>
-            <p>
-              <strong className="text-white">Property Standards:</strong> We implement comprehensive maintenance protocols and quality control measures to ensure our properties meet high operational standards.
-            </p>
-            <p>
-              <strong className="text-white">Tenant Relations:</strong> Our focus on responsive management and quality living environments supports tenant retention and satisfaction. We serve all tenants with dignity, including those using Section 8 housing vouchers.
-            </p>
-            <p>
-              <strong className="text-white">Community Impact:</strong> Quality housing creates stability for residents, which in turn strengthens neighborhoods and communities. This operational excellence delivers both social impact and strong investment returns.
-            </p>
-            <p className="text-lg font-medium">
-              Purpose-driven operations that create value for investors and residents alike.
+              Time filters everything. Markets shift. Cycles turn. What endures are well-run properties, aligned partners, and decisions made with care. By focusing on fundamentals, relationships, and long-term thinking, Callaloo Ventures seeks outcomes that are resilient — financially and operationally.
             </p>
           </div>
         </div>

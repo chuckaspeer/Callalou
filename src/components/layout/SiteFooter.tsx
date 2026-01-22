@@ -21,14 +21,14 @@ export function SiteFooter() {
             Multifamily Real Estate Investing with Purpose
           </h3>
           <p className="text-sm text-slate-300">
-            Building quality housing portfolios while creating lasting community impact. We combine operational excellence with purpose-driven investment to deliver value for investors and residents.
+          A long-term, operator-led approach to multifamily real estate investing.
           </p>
           <div className="flex gap-4 text-sm text-slate-300">
             <Link href="mailto:hello@callalouventures.com">
               hello@callalouventures.com
             </Link>
             <span>•</span>
-            <p>New York &amp; Antigua</p>
+            <p>Cincinnati &amp; Antigua</p>
           </div>
         </div>
         <div className="space-y-3 text-sm text-slate-300">

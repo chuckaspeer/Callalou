@@ -1,18 +1,24 @@
 import { Section } from "@/components/layout/Section";
 
-export function HomeNewsletter() {
+interface HomeNewsletterProps {
+  description?: string;
+}
+
+export function HomeNewsletter({ 
+  description = "If you're interested in insights on multifamily investing that prioritize clarity, discipline, and long-term thinking, you can subscribe for occasional updates. Measured perspectives. No noise."
+}: HomeNewsletterProps) {
   return (
     <Section background="muted" className="rounded-3xl shadow-inner" padding="lg">
       <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div className="space-y-3">
           <p className="text-sm uppercase tracking-[0.3em] text-slate-500">
-            Investor Updates
+            Stay Connected
           </p>
           <h2 className="text-3xl font-semibold text-slate-900">
-            Stay Informed on Multifamily Opportunities
+            Stay Connected
           </h2>
           <p className="text-slate-600">
-            Join our investor network to receive updates on portfolio performance, market insights, and investment opportunities. Get insights on multifamily real estate trends and operational strategies.
+            {description}
           </p>
         </div>
         <form className="flex w-full flex-col gap-3 md:max-w-md md:flex-row">
@@ -29,7 +35,7 @@ export function HomeNewsletter() {
             type="submit"
             className="rounded-full bg-slate-900 px-6 py-3 text-white transition hover:bg-slate-700"
           >
-            Join
+            Subscribe
           </button>
         </form>
       </div>

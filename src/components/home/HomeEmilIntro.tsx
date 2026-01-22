@@ -6,22 +6,21 @@ export function HomeEmilIntro() {
     <Section background="muted" className="rounded-3xl shadow-sm">
       <div className="grid gap-10 md:grid-cols-2 md:items-center">
         <div className="space-y-6">
-          <p className="text-sm uppercase tracking-[0.3em] text-slate-500">
-            Leadership
-          </p>
           <h2 className="text-3xl font-semibold text-slate-900">
-            Led by Emil Brown: Multifamily Operations with Purpose
+            Built on Experience, Guided by Principles
           </h2>
           <div className="space-y-4 text-slate-600">
             <p>
-              Emil Brown brings deep operational experience in multifamily real estate, with a track record of building quality housing portfolios that serve both investors and communities. His approach combines rigorous property management with a commitment to creating dignified living spaces.
+              Every property tells a story. Every decision carries weight. Callaloo Ventures is shaped by hands-on multifamily experience and a clear set of principles that inform how opportunities are evaluated, teams are built, and assets are stewarded over time.
             </p>
             <p>
-              Rooted in Caribbean heritage and shaped by values of hospitality and community, Emil&apos;s operational philosophy emphasizes that quality housing is both a sound investment and a foundation for opportunity. This cultural perspective informs how Callaloo Ventures approaches tenant relations, property standards, and community impact.
+              This approach prioritizes:
             </p>
-            <p>
-              Under Emil&apos;s leadership, Callaloo Ventures focuses on multifamily properties that deliver strong returns while creating lasting value for residents and neighborhoods.
-            </p>
+            <ul className="list-disc space-y-2 pl-6">
+              <li>Patience over urgency</li>
+              <li>Clarity over complexity</li>
+              <li>Partnership over speculation</li>
+            </ul>
           </div>
         </div>
         <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">

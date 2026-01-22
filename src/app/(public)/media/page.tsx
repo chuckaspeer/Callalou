@@ -11,7 +11,7 @@ export default function MediaPage() {
       <FeaturedVideo />
       <VideoGrid />
       <ArticleList />
-      <HomeNewsletter />
+      <HomeNewsletter description="Get thoughtful perspectives on multifamily investing — without hype." />
     </div>
   );
 }

@@ -37,20 +37,23 @@ export function CallalouEssence() {
       <div className="grid gap-6 pt-8 md:grid-cols-3">
         {[
           {
+            id: "essence-themes",
             title: "Core Themes",
             copy: "Home • Dignity • Stability • Growth • Community • Forward Momentum",
           },
           {
+            id: "essence-personality",
             title: "Brand Personality",
             copy: "Warm, intentional, principled, ambitious, rooted in heritage",
           },
           {
+            id: "essence-positioning",
             title: "Positioning",
             copy: "The purpose-driven, heritage-rooted alternative to traditional real estate investors",
           },
         ].map((item) => (
           <div
-            key={item.title}
+            key={item.id}
             className="rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-sm"
           >
             <h3 className="text-xl font-semibold text-slate-900">

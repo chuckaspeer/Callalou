@@ -3,18 +3,21 @@ import { Section } from "@/components/layout/Section";
 
 const features = [
   {
+    id: "feature-newsletter",
     title: "Belonging Field Notes",
     type: "Newsletter",
     summary:
       "Operator interviews and data stories about housing, migration, and diaspora capital.",
   },
   {
+    id: "feature-events",
     title: "Why Home Matters (Live)",
     type: "Event Series",
     summary:
       "Fireside conversations hosted across Brooklyn, Atlanta, and Antigua spotlighting community architects.",
   },
   {
+    id: "feature-podcast",
     title: "Burn the Boats Podcast",
     type: "Audio",
     summary:
@@ -27,20 +30,19 @@ export function HomeContentPreview() {
     <Section>
       <div className="space-y-4">
         <p className="text-sm uppercase tracking-[0.3em] text-slate-500">
-          Content Lab
+          Media & Insights
         </p>
         <h2 className="text-3xl font-semibold text-slate-900">
-          Stories, events, and research that fuel the movement.
+          Media & Insights
         </h2>
         <p className="text-slate-600">
-          We treat content as capital—translating founder lessons, community
-          research, and creative inspiration into tools anyone can use.
+          Thoughtful perspectives on multifamily investing, housing, and long-term value. Explore videos, essays, and commentary grounded in experience — not hype.
         </p>
       </div>
       <div className="grid gap-6 pt-6 md:grid-cols-3">
         {features.map((feature) => (
           <div
-            key={feature.title}
+            key={feature.id}
             className="rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-sm"
           >
             <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
@@ -55,10 +57,10 @@ export function HomeContentPreview() {
       </div>
       <div>
         <Link
-          href="/content"
+          href="/media"
           className="inline-flex items-center gap-2 text-sm font-semibold text-slate-900"
         >
-          Visit the content hub →
+          Explore the Media Hub →
         </Link>
       </div>
     </Section>
