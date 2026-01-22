@@ -4,7 +4,7 @@ export function CincinnatiSkylineBanner() {
   return (
     <div className="relative h-48 w-full overflow-hidden sm:h-64 md:h-80">
       <Image
-        src="/images/brand/Cincinnati-skyline.jpg"
+        src="/images/brand/Cincy-Pano-Pic1.jpg"
         alt="Cincinnati skyline"
         fill
         className="object-cover"
