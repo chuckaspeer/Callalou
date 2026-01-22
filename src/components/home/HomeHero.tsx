@@ -44,7 +44,7 @@ export function HomeHero() {
         </div>
         <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
           <Image
-            src="/images/brand/Cincinnati-skyline.jpg"
+            src="/images/brand/Cincy-Pano-Pic1.jpg"
             alt="Callaloo Ventures property - a welcoming home with cityscape view"
             fill
             className="object-cover"
