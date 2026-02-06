@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function CincinnatiSkylineBanner() {
   return (
-    <div className="relative h-48 w-full overflow-hidden sm:h-64 md:h-80">
+    <div className="relative h-56 w-full overflow-hidden sm:h-64 md:h-80">
       <Image
         src="/images/brand/Cincy-Pano-Pic1.jpg"
         alt="Cincinnati skyline"
