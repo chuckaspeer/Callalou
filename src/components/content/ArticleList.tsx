@@ -1,6 +1,6 @@
 import { Section } from "@/components/layout/Section";
 
-const articles = [
+const defaultArticles = [
   {
     id: "article-journey",
     title: "From Antigua to Cincinnati: Building Wealth with Purpose",
@@ -21,7 +21,13 @@ const articles = [
   },
 ];
 
-export function ArticleList() {
+interface ArticleListProps {
+  items?: Array<{ id: string; title: string; summary: string }>;
+}
+
+export function ArticleList({ items }: ArticleListProps) {
+  const articles = items ?? defaultArticles;
+
   return (
     <Section>
       <div className="space-y-4">

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { TrackedLink } from "@/components/layout/TrackedLink";
 
 const navLinks = [
   { href: "/about", label: "About" },
@@ -24,7 +25,7 @@ export function SiteHeader() {
             Callaloo Ventures
           </span>
           <span className="hidden text-sm font-medium text-slate-500 sm:inline">
-            Multifamily Real Estate Investing
+            Multifamily Real Estate Platform
           </span>
         </Link>
         <nav className="flex flex-wrap items-center gap-4 text-sm font-medium text-slate-600">
@@ -37,12 +38,13 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/contact?type=investor"
+          <TrackedLink
+            href="/contact"
+            event="click_request_private_introduction"
             className="rounded-full bg-slate-900 px-4 py-2 text-white transition hover:bg-slate-700"
           >
-            Invest With Us
-          </Link>
+            Request private introduction
+          </TrackedLink>
         </nav>
       </div>
     </header>
