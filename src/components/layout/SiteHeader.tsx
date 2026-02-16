@@ -1,12 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { TrackedLink } from "@/components/layout/TrackedLink";
 
 const navLinks = [
-  { href: "/about", label: "About" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/media", label: "Media" },
+  { href: "/", label: "Home" },
+  { href: "/media", label: "Insights" },
+  { href: "/contact", label: "Connect" },
 ];
 
 export function SiteHeader() {
@@ -38,13 +36,6 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
-          <TrackedLink
-            href="/contact"
-            event="click_request_private_introduction"
-            className="rounded-full bg-slate-900 px-4 py-2 text-white transition hover:bg-slate-700"
-          >
-            Request private introduction
-          </TrackedLink>
         </nav>
       </div>
     </header>

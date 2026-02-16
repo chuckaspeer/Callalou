@@ -2,11 +2,9 @@ import Link from "next/link";
 // import { ComplianceNotice } from "./ComplianceNotice";
 
 const quickLinks = [
-  { href: "/about", label: "About" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/media", label: "Media" },
-  { href: "/contact", label: "Contact" },
+  { href: "/", label: "Home" },
+  { href: "/media", label: "Insights" },
+  { href: "/contact", label: "Connect" },
 ];
 
 export function SiteFooter() {

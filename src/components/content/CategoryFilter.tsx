@@ -21,6 +21,7 @@ export function CategoryFilter({ currentCategory, selectedPlatform }: CategoryFi
       <div className="flex flex-wrap items-center gap-2">
         <Link
           href={buildMediaHref("All", selectedPlatform)}
+          scroll={false}
           className={`rounded-full px-4 py-2 text-sm font-medium transition ${
             currentCategory === "All"
               ? "bg-slate-900 text-white"
@@ -33,6 +34,7 @@ export function CategoryFilter({ currentCategory, selectedPlatform }: CategoryFi
           <Link
             key={cat}
             href={buildMediaHref(cat, selectedPlatform)}
+            scroll={false}
             className={`rounded-full px-4 py-2 text-sm font-medium transition ${
               currentCategory === cat
                 ? "bg-slate-900 text-white"

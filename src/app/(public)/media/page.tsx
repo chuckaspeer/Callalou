@@ -63,9 +63,9 @@ export default async function MediaPage({ searchParams }: PageProps) {
         category={selectedCategory}
         platform={selectedPlatform}
       />
+      <ArticleList items={articleItems} />
       <FeaturedVideo />
       <VideoGrid />
-      <ArticleList items={articleItems} />
       <FormatsSection selectedCategory={selectedCategory} />
       <HomeNewsletter description="Get thoughtful perspectives on multifamily — without hype." />
     </div>

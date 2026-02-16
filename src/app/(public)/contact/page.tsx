@@ -1,6 +1,8 @@
 import { Suspense } from "react";
 import { WhatHappensNext } from "@/components/contact/WhatHappensNext";
 import { ContactFormWrapper } from "@/components/contact/ContactFormWrapper";
+import { DownsideChecklistSection } from "@/components/contact/DownsideChecklistSection";
+import { ContactPageScrollToFocus } from "@/components/contact/ContactPageScrollToFocus";
 
 export default function ContactPage() {
   return (
@@ -8,6 +10,10 @@ export default function ContactPage() {
       <WhatHappensNext />
       <Suspense fallback={<div>Loading...</div>}>
         <ContactFormWrapper />
+      </Suspense>
+      <DownsideChecklistSection />
+      <Suspense fallback={null}>
+        <ContactPageScrollToFocus />
       </Suspense>
     </div>
   );

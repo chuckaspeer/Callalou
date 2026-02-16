@@ -1,28 +1,30 @@
 import { HomeHero } from "@/components/home/HomeHero";
-import { FounderNote } from "@/components/home/FounderNote";
 import { UnderwritingStandard } from "@/components/home/UnderwritingStandard";
 import { ProofOfSeriousness } from "@/components/home/ProofOfSeriousness";
-import { PortfolioOverview } from "@/components/home/PortfolioOverview";
+import { PrinciplesStrip } from "@/components/home/PrinciplesStrip";
+import { PlatformInFormation } from "@/components/home/PlatformInFormation";
+import { FounderNote } from "@/components/home/FounderNote";
 import { FeaturedInsights } from "@/components/home/FeaturedInsights";
+import { PortfolioOverview } from "@/components/home/PortfolioOverview";
 import { HomeWhyHomeMatters } from "@/components/home/HomeWhyHomeMatters";
 import { HowItWorks } from "@/components/home/HowItWorks";
 import { HomeEmilIntro } from "@/components/home/HomeEmilIntro";
-import { PrinciplesStrip } from "@/components/home/PrinciplesStrip";
 import { HomeNewsletter } from "@/components/home/HomeNewsletter";
 
 export default function HomePage() {
   return (
     <div className="space-y-16">
       <HomeHero />
-      <FounderNote />
       <UnderwritingStandard />
       <ProofOfSeriousness />
-      <PortfolioOverview />
+      <PrinciplesStrip />
+      <PlatformInFormation />
+      <FounderNote />
       <FeaturedInsights />
+      <PortfolioOverview />
       <HomeWhyHomeMatters />
       <HowItWorks />
       <HomeEmilIntro />
-      <PrinciplesStrip />
       <HomeNewsletter />
     </div>
   );
