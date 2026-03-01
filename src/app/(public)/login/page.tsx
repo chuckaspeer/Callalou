@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
-export default function ContactPage() {
+export default function LoginPage() {
   redirect("/private-dialogue");
 }

@@ -1,12 +1,5 @@
-import { BurnTheBoatsIntro } from "@/components/philosophy/BurnTheBoatsIntro";
-import { BurnTheBoatsDetails } from "@/components/philosophy/BurnTheBoatsDetails";
+import { redirect } from "next/navigation";
 
 export default function PhilosophyPage() {
-  return (
-    <div className="space-y-16">
-      <BurnTheBoatsIntro />
-      <BurnTheBoatsDetails />
-    </div>
-  );
+  redirect("/founder-letter");
 }
-

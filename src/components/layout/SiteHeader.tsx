@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CTAButton } from "@/components/ui/CTAButton";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/media", label: "Insights" },
-  { href: "/contact", label: "Connect" },
+  { href: "/our-standard", label: "Our Standard" },
+  { href: "/capital-framework", label: "Capital Framework" },
+  { href: "/founder-letter", label: "Founder Letter" },
 ];
 
 export function SiteHeader() {
@@ -22,11 +24,8 @@ export function SiteHeader() {
           <span className="text-lg font-semibold tracking-tight text-slate-900">
             Callaloo Ventures
           </span>
-          <span className="hidden text-sm font-medium text-slate-500 sm:inline">
-            Multifamily Real Estate Platform
-          </span>
         </Link>
-        <nav className="flex flex-wrap items-center gap-4 text-sm font-medium text-slate-600">
+        <nav className="flex flex-wrap items-center gap-4 text-sm font-medium text-slate-600 sm:items-center">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -36,9 +35,9 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
+          <CTAButton variant="primary" />
         </nav>
       </div>
     </header>
   );
 }
-

@@ -1,10 +1,5 @@
-import { GalleryGrid } from "@/components/gallery/GalleryGrid";
+import { redirect } from "next/navigation";
 
 export default function GalleryPage() {
-  return (
-    <div className="space-y-16">
-      <GalleryGrid />
-    </div>
-  );
+  redirect("/");
 }
-

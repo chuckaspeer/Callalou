@@ -15,13 +15,15 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://callalouventures.com"),
   title: {
-    default: "Callaloo Ventures | Multifamily Real Estate Investing",
+    default: "Callaloo Ventures | Multifamily Real Estate",
     template: "%s | Callaloo Ventures",
   },
-  description: "Multifamily real estate investment platform focused on quality apartments and community impact. Accredited investor opportunities.",
+  description:
+    "Callaloo Ventures: a long-term, operator-led approach to multifamily real estate. Quality apartments and community impact.",
   openGraph: {
-    title: "Callaloo Ventures | Multifamily Real Estate Investing",
-    description: "Multifamily real estate investment platform focused on quality apartments and community impact. Accredited investor opportunities.",
+    title: "Callaloo Ventures | Multifamily Real Estate",
+    description:
+      "Callaloo Ventures: a long-term, operator-led approach to multifamily real estate. Quality apartments and community impact.",
     url: "https://callalouventures.com",
     siteName: "Callaloo Ventures",
     type: "website",
