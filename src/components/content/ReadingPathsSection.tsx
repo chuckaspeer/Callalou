@@ -3,6 +3,7 @@ import { Section } from "@/components/layout/Section";
 import {
   READING_PATH_ORDER,
   getInsightsForPath,
+  getInsightsForPathFromList,
   type InsightCategory,
   type Insight,
   type InsightPlatform,
@@ -35,9 +36,16 @@ function InsightItem({ item }: { item: Insight }) {
 interface ReadingPathsSectionProps {
   category: InsightCategory | "All";
   platform?: InsightPlatform;
+  /** When provided (e.g. from API), use this list instead of static content. */
+  insights?: Insight[];
 }
 
-export function ReadingPathsSection({ category, platform }: ReadingPathsSectionProps) {
+export function ReadingPathsSection({ category, platform, insights }: ReadingPathsSectionProps) {
+  const getItems = (path: typeof READING_PATH_ORDER[number]) =>
+    insights != null
+      ? getInsightsForPathFromList(insights, path, category, 10, platform)
+      : getInsightsForPath(path, category, 10, platform);
+
   return (
     <Section id="reading-paths">
       <div className="space-y-8">
@@ -51,7 +59,7 @@ export function ReadingPathsSection({ category, platform }: ReadingPathsSectionP
         </div>
         <div className="grid gap-10 sm:grid-cols-1 md:grid-cols-3">
           {READING_PATH_ORDER.map((path) => {
-            const items = getInsightsForPath(path, category, 10, platform);
+            const items = getItems(path);
             return (
               <div key={path} className="space-y-3">
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-700">

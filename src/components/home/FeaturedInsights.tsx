@@ -44,7 +44,7 @@ export function FeaturedInsights() {
       </div>
       <div className="mt-4">
         <Link
-          href="/media"
+          href="/insights"
           className="inline-flex items-center gap-2 text-sm font-semibold text-slate-900 hover:text-slate-600"
         >
           Explore full library →

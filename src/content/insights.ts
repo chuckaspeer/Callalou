@@ -1,63 +1,26 @@
 /**
- * Static insights config for Media/Insights library. No backend.
+ * Fallback insights data and helpers. Types and constants from @/types/insights.
+ * When proxy is available, insights page uses API; on failure falls back to this.
  */
 
-export type InsightType = "video" | "article" | "post";
-export type InsightPlatform =
-  | "YouTube"
-  | "LinkedIn"
-  | "Instagram"
-  | "Facebook"
-  | "Site";
-export type InsightCategory =
-  | "Transparency"
-  | "Risk"
-  | "Allocation"
-  | "Patience"
-  | "Platform Build";
-export type ReadingPath = "Start Here" | "Underwriting" | "Stewardship";
-export type FeaturedSlot =
-  | "start-here"
-  | "underwriting"
-  | "stewardship"
-  | "wildcard";
+import type { Insight, InsightCategory, InsightPlatform, ReadingPath } from "@/types/insights";
+import {
+  CATEGORIES,
+  READING_PATH_ORDER,
+  VALID_PLATFORMS,
+} from "@/types/insights";
 
-export interface Insight {
-  id: string;
-  title: string;
-  type: InsightType;
-  url: string;
-  platform: InsightPlatform;
-  categories: InsightCategory[];
-  readingPaths: ReadingPath[];
-  featuredSlot?: FeaturedSlot;
-  summary?: string;
-  length?: string;
-}
-
-/** Stable order for Reading Paths. Do not sort by date. */
-export const READING_PATH_ORDER: ReadingPath[] = [
-  "Start Here",
-  "Underwriting",
-  "Stewardship",
-];
-
-export const CATEGORIES: InsightCategory[] = [
-  "Transparency",
-  "Risk",
-  "Allocation",
-  "Patience",
-  "Platform Build",
-];
-
-/** Supported for ?platform= URL param. Validation uses this. */
-export const VALID_PLATFORMS: InsightPlatform[] = [
-  "LinkedIn",
-  "YouTube",
-  "Instagram",
-  "Facebook",
-  "Site",
-];
+// Re-export types and constants for consumers that import from @/content/insights
+export type { Insight, InsightCategory, InsightPlatform, ReadingPath };
+export type { InsightType, FeaturedSlot, InsightStatus } from "@/types/insights";
+export {
+  CATEGORIES,
+  READING_PATH_ORDER,
+  VALID_PLATFORMS,
+  normalizeInsight,
+  sortInsights,
+  resolveVideoFields,
+} from "@/types/insights";
 
 const insights: Insight[] = [
   {
@@ -72,6 +35,10 @@ const insights: Insight[] = [
     summary:
       "Housing is more than an asset class. It's where lives stabilize and communities take shape.",
     length: "10 min",
+    featured: true,
+    order: 0,
+    published_at: null,
+    status: "published",
   },
   {
     id: "antigua-to-opportunity",
@@ -83,6 +50,10 @@ const insights: Insight[] = [
     readingPaths: ["Start Here"],
     summary: "Origin and approach.",
     length: "12 min",
+    featured: false,
+    order: 1,
+    published_at: null,
+    status: "published",
   },
   {
     id: "burn-the-boats-video",
@@ -95,6 +66,10 @@ const insights: Insight[] = [
     featuredSlot: "underwriting",
     summary: "Commitment, discipline, and preparation.",
     length: "15 min",
+    featured: true,
+    order: 2,
+    published_at: null,
+    status: "published",
   },
   {
     id: "article-antigua-cincinnati",
@@ -107,6 +82,10 @@ const insights: Insight[] = [
     featuredSlot: "start-here",
     summary:
       "How cultural roots and long-term thinking shape approach to real estate and community.",
+    featured: true,
+    order: 3,
+    published_at: null,
+    status: "published",
   },
   {
     id: "article-burn-the-boats",
@@ -118,6 +97,10 @@ const insights: Insight[] = [
     readingPaths: ["Underwriting"],
     summary:
       "Why removing the option of retreat leads to bold action and full belief in the path ahead — preparation, discipline, purpose.",
+    featured: false,
+    order: 4,
+    published_at: null,
+    status: "published",
   },
   {
     id: "article-why-home-matters",
@@ -129,6 +112,10 @@ const insights: Insight[] = [
     readingPaths: ["Stewardship"],
     summary:
       "How stable housing transforms lives and why we steward properties that serve all tenants with respect and dignity.",
+    featured: false,
+    order: 5,
+    published_at: null,
+    status: "published",
   },
   {
     id: "standards-and-transparency",
@@ -140,6 +127,10 @@ const insights: Insight[] = [
     readingPaths: ["Start Here", "Underwriting"],
     featuredSlot: "wildcard",
     summary: "How we document and publish expectations so behavior is auditable.",
+    featured: true,
+    order: 6,
+    published_at: null,
+    status: "published",
   },
   {
     id: "downside-first",
@@ -150,6 +141,10 @@ const insights: Insight[] = [
     categories: ["Risk", "Transparency"],
     readingPaths: ["Underwriting"],
     summary: "Leverage, operating assumptions, and liquidity before upside.",
+    featured: false,
+    order: 7,
+    published_at: null,
+    status: "published",
   },
   {
     id: "stewardship-structures",
@@ -160,6 +155,10 @@ const insights: Insight[] = [
     categories: ["Transparency", "Patience"],
     readingPaths: ["Stewardship"],
     summary: "Durability and alignment over speed.",
+    featured: false,
+    order: 8,
+    published_at: null,
+    status: "published",
   },
   {
     id: "start-here-trust",
@@ -170,6 +169,10 @@ const insights: Insight[] = [
     categories: ["Patience", "Transparency"],
     readingPaths: ["Start Here"],
     summary: "What we mean by judgment and long-horizon discipline.",
+    featured: false,
+    order: 9,
+    published_at: null,
+    status: "published",
   },
   {
     id: "start-here-expectations",
@@ -180,6 +183,10 @@ const insights: Insight[] = [
     categories: ["Transparency"],
     readingPaths: ["Start Here"],
     summary: "Designed for calm periods and difficult ones.",
+    featured: false,
+    order: 10,
+    published_at: null,
+    status: "published",
   },
   {
     id: "underwriting-criteria",
@@ -190,6 +197,10 @@ const insights: Insight[] = [
     categories: ["Risk", "Transparency"],
     readingPaths: ["Underwriting"],
     summary: "Competence and downside reasoning.",
+    featured: false,
+    order: 11,
+    published_at: null,
+    status: "published",
   },
   {
     id: "allocation-principles",
@@ -200,6 +211,10 @@ const insights: Insight[] = [
     categories: ["Allocation", "Risk"],
     readingPaths: ["Underwriting", "Stewardship"],
     summary: "How we think about concentration and downside.",
+    featured: false,
+    order: 12,
+    published_at: null,
+    status: "published",
   },
   {
     id: "stewardship-signals",
@@ -210,6 +225,10 @@ const insights: Insight[] = [
     categories: ["Patience", "Transparency"],
     readingPaths: ["Stewardship"],
     summary: "What we look for in partners and structures.",
+    featured: false,
+    order: 13,
+    published_at: null,
+    status: "published",
   },
   {
     id: "platform-build",
@@ -220,6 +239,10 @@ const insights: Insight[] = [
     categories: ["Platform Build", "Transparency"],
     readingPaths: ["Start Here"],
     summary: "How we document how we operate.",
+    featured: false,
+    order: 14,
+    published_at: null,
+    status: "published",
   },
 ];
 
@@ -227,27 +250,21 @@ export function getAllInsights(): Insight[] {
   return insights;
 }
 
-export function getInsightsByReadingPath(
-  path: ReadingPath
-): Insight[] {
+export function getInsightsByReadingPath(path: ReadingPath): Insight[] {
   return insights.filter((i) => i.readingPaths.includes(path));
 }
 
-export function getInsightsByCategory(
-  category: InsightCategory | "All"
-): Insight[] {
+export function getInsightsByCategory(category: InsightCategory | "All"): Insight[] {
   if (category === "All") return insights;
   return insights.filter((i) => i.categories.includes(category));
 }
 
-export function getInsightsFilteredByCategory(
-  category: InsightCategory | "All"
-): Insight[] {
+export function getInsightsFilteredByCategory(category: InsightCategory | "All"): Insight[] {
   return getInsightsByCategory(category);
 }
 
 export function getFeaturedForHome(): Insight[] {
-  const bySlot: Record<FeaturedSlot, Insight | undefined> = {
+  const bySlot: Record<"start-here" | "underwriting" | "stewardship" | "wildcard", Insight | undefined> = {
     "start-here": undefined,
     underwriting: undefined,
     stewardship: undefined,
@@ -264,9 +281,7 @@ export function getFeaturedForHome(): Insight[] {
   ].filter((i): i is Insight => i != null);
 }
 
-export function getInsightsByPlatform(
-  platform: InsightPlatform
-): Insight[] {
+export function getInsightsByPlatform(platform: InsightPlatform): Insight[] {
   return insights.filter((i) => i.platform === platform);
 }
 
@@ -294,4 +309,41 @@ export function getFilteredInsights(
       (category === "All" || i.categories.includes(category)) &&
       (platform === undefined || i.platform === platform)
   );
+}
+
+/** Run getInsightsForPath against an arbitrary list (e.g. from API). */
+export function getInsightsForPathFromList(
+  list: Insight[],
+  path: ReadingPath,
+  category: InsightCategory | "All",
+  limit = 10,
+  platform?: InsightPlatform
+): Insight[] {
+  return list
+    .filter(
+      (i) =>
+        i.readingPaths.includes(path) &&
+        (category === "All" || i.categories.includes(category)) &&
+        (platform === undefined || i.platform === platform)
+    )
+    .slice(0, limit);
+}
+
+/** Run getFeaturedForHome against an arbitrary list (e.g. from API). */
+export function getFeaturedForHomeFromList(list: Insight[]): Insight[] {
+  const bySlot: Record<"start-here" | "underwriting" | "stewardship" | "wildcard", Insight | undefined> = {
+    "start-here": undefined,
+    underwriting: undefined,
+    stewardship: undefined,
+    wildcard: undefined,
+  };
+  for (const i of list) {
+    if (i.featuredSlot && !bySlot[i.featuredSlot]) bySlot[i.featuredSlot] = i;
+  }
+  return [
+    bySlot["start-here"],
+    bySlot["underwriting"],
+    bySlot["stewardship"],
+    bySlot["wildcard"],
+  ].filter((i): i is Insight => i != null);
 }

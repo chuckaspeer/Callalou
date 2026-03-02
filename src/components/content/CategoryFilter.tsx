@@ -2,12 +2,12 @@ import Link from "next/link";
 import { Section } from "@/components/layout/Section";
 import { CATEGORIES, type InsightCategory, type InsightPlatform } from "@/content/insights";
 
-function buildMediaHref(category: InsightCategory | "All", platform?: InsightPlatform): string {
+function buildInsightsHref(category: InsightCategory | "All", platform?: InsightPlatform): string {
   const params = new URLSearchParams();
   if (category !== "All") params.set("category", category);
   if (platform) params.set("platform", platform);
   const q = params.toString();
-  return q ? `/media?${q}` : "/media";
+  return q ? `/insights?${q}` : "/insights";
 }
 
 interface CategoryFilterProps {
@@ -20,7 +20,7 @@ export function CategoryFilter({ currentCategory, selectedPlatform }: CategoryFi
     <Section className="pt-0" padding="none">
       <div className="flex flex-wrap items-center gap-2">
         <Link
-          href={buildMediaHref("All", selectedPlatform)}
+          href={buildInsightsHref("All", selectedPlatform)}
           scroll={false}
           className={`rounded-full px-4 py-2 text-sm font-medium transition ${
             currentCategory === "All"
@@ -33,7 +33,7 @@ export function CategoryFilter({ currentCategory, selectedPlatform }: CategoryFi
         {CATEGORIES.map((cat) => (
           <Link
             key={cat}
-            href={buildMediaHref(cat, selectedPlatform)}
+            href={buildInsightsHref(cat, selectedPlatform)}
             scroll={false}
             className={`rounded-full px-4 py-2 text-sm font-medium transition ${
               currentCategory === cat

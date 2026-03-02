@@ -4,6 +4,7 @@ import { CTAButton } from "@/components/ui/CTAButton";
 
 const navLinks = [
   { href: "/", label: "Home" },
+  { href: "/insights", label: "Insights" },
   { href: "/our-standard", label: "Our Standard" },
   { href: "/capital-framework", label: "Capital Framework" },
   { href: "/founder-letter", label: "Founder Letter" },

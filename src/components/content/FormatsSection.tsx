@@ -9,11 +9,11 @@ const FORMATS: { platform: InsightPlatform; learn: string }[] = [
   { platform: "Facebook", learn: "Community and relationship continuity." },
 ];
 
-function buildMediaHref(category: InsightCategory | "All", platform: InsightPlatform): string {
+function buildInsightsHref(category: InsightCategory | "All", platform: InsightPlatform): string {
   const params = new URLSearchParams();
   if (category !== "All") params.set("category", category);
   params.set("platform", platform);
-  return `/media?${params.toString()}`;
+  return `/insights?${params.toString()}`;
 }
 
 interface FormatsSectionProps {
@@ -38,12 +38,12 @@ export function FormatsSection({ selectedCategory }: FormatsSectionProps) {
             <p className="text-sm font-semibold text-slate-900">{platform}</p>
             <p className="mt-2 text-sm text-slate-600">{learn}</p>
             <TrackedLink
-              href={buildMediaHref(selectedCategory, platform)}
+              href={buildInsightsHref(selectedCategory, platform)}
               event="click_format_lane"
               eventProps={{ platform }}
               className="mt-3 inline-block text-xs font-medium text-slate-700 hover:text-slate-900"
             >
-              View on Media →
+              View on Insights →
             </TrackedLink>
           </div>
         ))}

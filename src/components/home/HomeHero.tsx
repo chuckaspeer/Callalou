@@ -32,7 +32,7 @@ export function HomeHero() {
           </div>
           <div className="flex flex-wrap gap-4 pt-4">
             <TrackedLink
-              href="/media"
+              href="/insights"
               event="click_explore_thinking"
               className="rounded-full bg-slate-900 px-6 py-3 text-white transition hover:bg-slate-700"
             >

@@ -13,7 +13,7 @@ export function AboutCTA() {
         </p>
         <div className="pt-4 flex flex-wrap gap-4 justify-center">
           <Link
-            href="/media"
+            href="/insights"
             className="inline-flex rounded-full bg-slate-900 px-6 py-3 text-white transition hover:bg-slate-700"
           >
             Explore Media
