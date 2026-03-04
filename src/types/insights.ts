@@ -16,12 +16,51 @@ export type InsightCategory =
   | "Allocation"
   | "Patience"
   | "Platform Build";
-export type ReadingPath = "Start Here" | "Underwriting" | "Stewardship";
+export const READING_PATH_ORDER = [
+  "Start Here",
+  "Underwriting",
+  "Stewardship",
+  "Wildcard",
+] as const;
+
+export type ReadingPath = (typeof READING_PATH_ORDER)[number];
+
+export const READING_PATH_KEY_TO_LABEL: Record<string, ReadingPath> = {
+  "start-here": "Start Here",
+  underwriting: "Underwriting",
+  stewardship: "Stewardship",
+  wildcard: "Wildcard",
+};
+
+export const READING_PATH_KEYS = ["start-here", "underwriting", "stewardship", "wildcard"] as const;
+export type ReadingPathKey = (typeof READING_PATH_KEYS)[number];
+
+export function isValidReadingPathKey(s: string): s is ReadingPathKey {
+  return (READING_PATH_KEYS as readonly string[]).includes(s);
+}
+
+export const READING_PATH_LABELS = [...READING_PATH_ORDER];
+
+export function normalizeReadingPath(input: unknown): ReadingPath | null {
+  if (typeof input !== "string") return null;
+  const raw = input.trim();
+  if (!raw) return null;
+  if ((READING_PATH_LABELS as readonly string[]).includes(raw)) {
+    return raw as ReadingPath;
+  }
+  const key = raw
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/_+/g, "-")
+    .replace(/-+/g, "-");
+  return READING_PATH_KEY_TO_LABEL[key] ?? null;
+}
+
 export type FeaturedSlot =
-  | "start-here"
-  | "underwriting"
-  | "stewardship"
-  | "wildcard";
+  | "reading-path"
+  | "sm-links"
+  | "video-series"
+  | "why-home-matters";
 export type InsightStatus = "draft" | "published" | "archived";
 
 export interface Insight {
@@ -32,7 +71,7 @@ export interface Insight {
   platform: InsightPlatform;
   categories: InsightCategory[];
   readingPaths: ReadingPath[];
-  featuredSlot?: FeaturedSlot;
+  featuredSlot?: FeaturedSlot | ReadingPathKey;
   summary?: string;
   length?: string;
   featured?: boolean;
@@ -50,13 +89,6 @@ export const INSIGHT_DEFAULTS = {
   published_at: null as string | null,
   status: "draft" as InsightStatus,
 } as const;
-
-/** Stable order for Reading Paths. Do not sort by date. */
-export const READING_PATH_ORDER: ReadingPath[] = [
-  "Start Here",
-  "Underwriting",
-  "Stewardship",
-];
 
 export const CATEGORIES: InsightCategory[] = [
   "Transparency",
@@ -76,10 +108,10 @@ export const VALID_PLATFORMS: InsightPlatform[] = [
 ];
 
 const VALID_FEATURED_SLOTS: FeaturedSlot[] = [
-  "start-here",
-  "underwriting",
-  "stewardship",
-  "wildcard",
+  "reading-path",
+  "sm-links",
+  "video-series",
+  "why-home-matters",
 ];
 
 const VALID_STATUSES: InsightStatus[] = ["draft", "published", "archived"];
@@ -134,9 +166,9 @@ export function normalizeInsight(raw: Partial<Insight>): Insight | null {
   const categories = Array.isArray(raw.categories)
     ? raw.categories.filter((c): c is InsightCategory => isValidCategory(String(c).trim()))
     : [];
-  const readingPaths = Array.isArray(raw.readingPaths)
-    ? raw.readingPaths.filter((p): p is ReadingPath => isValidReadingPath(String(p).trim()))
-    : [];
+  const readingPaths = (Array.isArray(raw.readingPaths) ? raw.readingPaths : [])
+    .map((p: unknown) => normalizeReadingPath(p))
+    .filter((v): v is ReadingPath => v != null);
 
   const orderNum = Number(raw.order);
   const order = Number.isNaN(orderNum) ? INSIGHT_DEFAULTS.order : orderNum;
@@ -156,9 +188,14 @@ export function normalizeInsight(raw: Partial<Insight>): Insight | null {
     thumbnailUrl: raw.thumbnailUrl,
   });
 
+  const featuredSlotRaw = raw.featuredSlot != null ? String(raw.featuredSlot).trim() : "";
+  const featuredSlotKey = featuredSlotRaw
+    ? featuredSlotRaw.toLowerCase().replace(/\s+/g, "-")
+    : "";
+
   const featuredSlot =
-    raw.featuredSlot != null && isValidFeaturedSlot(String(raw.featuredSlot).trim())
-      ? (String(raw.featuredSlot).trim().toLowerCase().replace(/\s+/g, "-") as FeaturedSlot)
+    featuredSlotKey && (isValidFeaturedSlot(featuredSlotKey) || isValidReadingPathKey(featuredSlotKey))
+      ? (featuredSlotKey as FeaturedSlot | ReadingPathKey)
       : undefined;
 
   const typeStr = raw.type != null ? String(raw.type).trim().toLowerCase() : "";

@@ -3,9 +3,10 @@
  * When proxy is available, insights page uses API; on failure falls back to this.
  */
 
-import type { Insight, InsightCategory, InsightPlatform, ReadingPath } from "@/types/insights";
+import type { Insight, InsightCategory, InsightPlatform, ReadingPath, ReadingPathKey } from "@/types/insights";
 import {
   CATEGORIES,
+  isValidReadingPathKey,
   READING_PATH_ORDER,
   VALID_PLATFORMS,
 } from "@/types/insights";
@@ -15,6 +16,7 @@ export type { Insight, InsightCategory, InsightPlatform, ReadingPath };
 export type { InsightType, FeaturedSlot, InsightStatus } from "@/types/insights";
 export {
   CATEGORIES,
+  READING_PATH_LABELS,
   READING_PATH_ORDER,
   VALID_PLATFORMS,
   normalizeInsight,
@@ -31,7 +33,7 @@ const insights: Insight[] = [
     platform: "YouTube",
     categories: ["Patience", "Platform Build"],
     readingPaths: ["Start Here", "Stewardship"],
-    featuredSlot: "stewardship",
+    featuredSlot: "why-home-matters",
     summary:
       "Housing is more than an asset class. It's where lives stabilize and communities take shape.",
     length: "10 min",
@@ -264,14 +266,14 @@ export function getInsightsFilteredByCategory(category: InsightCategory | "All")
 }
 
 export function getFeaturedForHome(): Insight[] {
-  const bySlot: Record<"start-here" | "underwriting" | "stewardship" | "wildcard", Insight | undefined> = {
+  const bySlot: Record<ReadingPathKey, Insight | undefined> = {
     "start-here": undefined,
     underwriting: undefined,
     stewardship: undefined,
     wildcard: undefined,
   };
   for (const i of insights) {
-    if (i.featuredSlot && !bySlot[i.featuredSlot]) bySlot[i.featuredSlot] = i;
+    if (i.featuredSlot && isValidReadingPathKey(i.featuredSlot) && !bySlot[i.featuredSlot]) bySlot[i.featuredSlot] = i;
   }
   return [
     bySlot["start-here"],
@@ -331,14 +333,14 @@ export function getInsightsForPathFromList(
 
 /** Run getFeaturedForHome against an arbitrary list (e.g. from API). */
 export function getFeaturedForHomeFromList(list: Insight[]): Insight[] {
-  const bySlot: Record<"start-here" | "underwriting" | "stewardship" | "wildcard", Insight | undefined> = {
+  const bySlot: Record<ReadingPathKey, Insight | undefined> = {
     "start-here": undefined,
     underwriting: undefined,
     stewardship: undefined,
     wildcard: undefined,
   };
   for (const i of list) {
-    if (i.featuredSlot && !bySlot[i.featuredSlot]) bySlot[i.featuredSlot] = i;
+    if (i.featuredSlot && isValidReadingPathKey(i.featuredSlot) && !bySlot[i.featuredSlot]) bySlot[i.featuredSlot] = i;
   }
   return [
     bySlot["start-here"],

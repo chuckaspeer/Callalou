@@ -86,21 +86,35 @@ export function PrivateDialogueForm() {
 
     setIsSubmitting(true);
     try {
-      const res = await fetch("/api/private-dialogue", {
+      const payload = {
+        full_name: formData.fullName.trim(),
+        email: formData.email.trim(),
+        investor_profile: formData.investorProfile.trim() || undefined,
+        accredited_status: formData.accreditedStatus.trim() || undefined,
+        experience: formData.experience.trim() || undefined,
+        commitment_range: formData.commitmentRange.trim() || undefined,
+        interests: formData.interests.trim() || undefined,
+        referral_source: formData.howDidYouHear.trim() || undefined,
+        source: "private-dialogue",
+      };
+      const res = await fetch("/api/introductions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
 
-      const data = await res.json().catch(() => ({}));
+      const data = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: { code?: string; message?: string } };
 
-      if (!res.ok) {
-        setError(data.message ?? "Something went wrong. Please try again.");
+      if (data?.ok === true) {
+        trackEvent("private_dialogue_submitted", { email: formData.email });
+        setSubmitted(true);
         return;
       }
-
-      trackEvent("private_dialogue_submitted", { email: formData.email });
-      setSubmitted(true);
+      setError(
+        (data?.error && typeof data.error.message === "string")
+          ? data.error.message
+          : "Something went wrong. Please try again."
+      );
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {

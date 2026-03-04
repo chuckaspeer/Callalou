@@ -1,19 +1,13 @@
 import Link from "next/link";
 import { Section } from "@/components/layout/Section";
 import {
-  READING_PATH_ORDER,
   getInsightsForPath,
   getInsightsForPathFromList,
   type InsightCategory,
   type Insight,
   type InsightPlatform,
 } from "@/content/insights";
-
-const PATH_LABELS: Record<string, string> = {
-  "Start Here": "Start Here",
-  Underwriting: "Underwriting",
-  Stewardship: "Stewardship",
-};
+import { READING_PATH_LABELS, type ReadingPath } from "@/types/insights";
 
 function InsightItem({ item }: { item: Insight }) {
   return (
@@ -41,7 +35,7 @@ interface ReadingPathsSectionProps {
 }
 
 export function ReadingPathsSection({ category, platform, insights }: ReadingPathsSectionProps) {
-  const getItems = (path: typeof READING_PATH_ORDER[number]) =>
+  const getItems = (path: ReadingPath) =>
     insights != null
       ? getInsightsForPathFromList(insights, path, category, 10, platform)
       : getInsightsForPath(path, category, 10, platform);
@@ -58,12 +52,12 @@ export function ReadingPathsSection({ category, platform, insights }: ReadingPat
           </h2>
         </div>
         <div className="grid gap-10 sm:grid-cols-1 md:grid-cols-3">
-          {READING_PATH_ORDER.map((path) => {
+          {READING_PATH_LABELS.map((path) => {
             const items = getItems(path);
             return (
               <div key={path} className="space-y-3">
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-700">
-                  {PATH_LABELS[path]}
+                  {path}
                 </h3>
                 <ul className="space-y-0">
                   {items.length === 0 ? (
