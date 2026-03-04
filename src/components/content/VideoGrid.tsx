@@ -1,27 +1,16 @@
+import Link from "next/link";
+import type { Insight } from "@/types/insights";
 import { Section } from "@/components/layout/Section";
+import { getVideoSeriesItems } from "@/lib/insights/selectors";
 
-const videos = [
-  {
-    id: "video-origin-story",
-    title: "From Antigua to Opportunity: The Emil Brown Story",
-    length: "12 min",
-    tag: "Origin Story",
-  },
-  {
-    id: "video-philosophy",
-    title: "Burn the Boats: Building Wealth with Purpose",
-    length: "15 min",
-    tag: "Philosophy",
-  },
-  {
-    id: "video-mission",
-    title: "Why Home Matters: Creating Dignity Through Housing",
-    length: "10 min",
-    tag: "Mission",
-  },
-];
+interface VideoGridProps {
+  insights: Insight[];
+}
 
-export function VideoGrid() {
+export function VideoGrid({ insights }: VideoGridProps) {
+  const videos = getVideoSeriesItems(insights);
+  if (videos.length === 0) return null;
+
   return (
     <Section className="pt-0">
       <div className="space-y-4">
@@ -40,18 +29,20 @@ export function VideoGrid() {
           >
             <div className="rounded-2xl bg-slate-900/90 p-8 text-white">
               <p className="text-sm uppercase tracking-[0.3em] text-white/70">
-                {video.tag}
+                {video.categories?.[0] ?? "Video"}
               </p>
               <p className="mt-3 text-xl font-semibold">{video.title}</p>
-              <p className="mt-2 text-sm text-white/60">{video.length}</p>
+              <p className="mt-2 text-sm text-white/60">{video.length ?? "—"}</p>
             </div>
-            <button className="text-left text-sm font-semibold text-slate-900">
+            <Link
+              href={video.url || "#"}
+              className="text-left text-sm font-semibold text-slate-900"
+            >
               Watch trailer →
-            </button>
+            </Link>
           </div>
         ))}
       </div>
     </Section>
   );
 }
-

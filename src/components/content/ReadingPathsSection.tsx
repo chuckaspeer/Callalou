@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { Section } from "@/components/layout/Section";
 import {
-  getInsightsForPath,
   getInsightsForPathFromList,
   type InsightCategory,
   type Insight,
   type InsightPlatform,
 } from "@/content/insights";
+import { getReadingPathItems } from "@/lib/insights/selectors";
 import { READING_PATH_LABELS, type ReadingPath } from "@/types/insights";
 
 function InsightItem({ item }: { item: Insight }) {
@@ -30,15 +30,13 @@ function InsightItem({ item }: { item: Insight }) {
 interface ReadingPathsSectionProps {
   category: InsightCategory | "All";
   platform?: InsightPlatform;
-  /** When provided (e.g. from API), use this list instead of static content. */
-  insights?: Insight[];
+  insights: Insight[];
 }
 
 export function ReadingPathsSection({ category, platform, insights }: ReadingPathsSectionProps) {
+  const readingPathItems = getReadingPathItems(insights);
   const getItems = (path: ReadingPath) =>
-    insights != null
-      ? getInsightsForPathFromList(insights, path, category, 10, platform)
-      : getInsightsForPath(path, category, 10, platform);
+    getInsightsForPathFromList(readingPathItems, path, category, 10, platform);
 
   return (
     <Section id="reading-paths">

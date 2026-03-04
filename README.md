@@ -28,8 +28,9 @@ Copy `.env.example` to `.env` and set values. Do not expose to the client.
 |----------|----------|-------------|
 | `INSIGHTS_SCRIPT_URL` | For Insights + Introductions | Full Google Apps Script Web App URL (e.g. `https://script.google.com/macros/s/.../exec`). Used by `/api/insights/media`, `/api/insights/featured`, and `/api/introductions`. |
 | `INSIGHTS_SCRIPT_SECRET` | For GET introductions (admin) | Secret for server-to-server auth. Required only for GET `/api/introductions` (read introductions). Not sent with POST introductions. |
+| `ALLOW_INSIGHTS_FALLBACK` | Optional | Set to `"true"` to allow the Insights page to use hardcoded fallback data when the API fails (e.g. in production). Default: only development uses fallback; production fails loudly. |
 
-If `INSIGHTS_SCRIPT_URL` is not set, the Insights page still works using hardcoded fallback data from `src/content/insights.ts`. Introductions POST will return CONFIG error.
+If `INSIGHTS_SCRIPT_URL` is not set, the Insights API returns 503 and the **Insights page in production shows a clear error** (no silent fallback). In development, or when `ALLOW_INSIGHTS_FALLBACK=true`, the page may use hardcoded fallback data from `src/content/insights.ts`. Introductions POST will return CONFIG error.
 
 ## Google Apps Script deployment (Insights + Introductions)
 
@@ -56,6 +57,14 @@ Supported paths: `media` (GET), `featured` (GET), `introductions` (POST, GET wit
 3. **GET /api/insights/featured** — Returns featured items.
 4. **GET /api/introductions** — Requires `INSIGHTS_SCRIPT_SECRET`; returns introduction rows when called with secret. Without secret, use POST only.
 5. **No direct Apps Script calls from the browser** — In the network tab, only `/api/insights/*` and `/api/introductions` should appear; no requests to `script.google.com`.
+
+**Verify Insights API (local or production):**
+
+```bash
+curl https://callalou.vercel.app/api/insights/media
+```
+
+For local: `curl http://localhost:3000/api/insights/media`. When configured, response is JSON with `ok: true` and an `items` array.
 
 ## Learn More
 
