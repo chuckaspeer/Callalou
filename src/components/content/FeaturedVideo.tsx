@@ -21,14 +21,27 @@ export function FeaturedVideo({ insights }: FeaturedVideoProps) {
           {item.summary ?? ""}
         </p>
       </div>
-      <Link
-        href={item.url || "#"}
-        className="relative mt-6 block aspect-video overflow-hidden rounded-3xl border border-slate-200 bg-slate-900"
-      >
-        <div className="absolute inset-0 grid place-items-center text-center text-white">
-          <p className="text-lg font-semibold">▶︎ Watch the video</p>
+      {item.youtubeId ? (
+        <div className="relative mt-6 aspect-video overflow-hidden rounded-3xl border border-slate-200 bg-slate-900">
+          <iframe
+            src={`https://www.youtube.com/embed/${item.youtubeId}`}
+            title={item.title}
+            className="h-full w-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            loading="lazy"
+          />
         </div>
-      </Link>
+      ) : (
+        <Link
+          href={item.url || "#"}
+          className="relative mt-6 block aspect-video overflow-hidden rounded-3xl border border-slate-200 bg-slate-900"
+        >
+          <div className="absolute inset-0 grid place-items-center text-center text-white">
+            <p className="text-lg font-semibold">▶︎ Watch the video</p>
+          </div>
+        </Link>
+      )}
     </Section>
   );
 }
