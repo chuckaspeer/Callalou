@@ -8,7 +8,7 @@ import {
   type InsightCategory,
   type InsightPlatform,
 } from "@/content/insights";
-import type { Insight } from "@/types/insights";
+import type { Insight, PlatformConfig } from "@/types/insights";
 import { ContentIntro } from "@/components/content/ContentIntro";
 import { CategoryFilter } from "@/components/content/CategoryFilter";
 import { ReadingPathsSection } from "@/components/content/ReadingPathsSection";
@@ -41,8 +41,54 @@ function getNormalizedFallback(): Insight[] {
 }
 
 type FetchMediaResult =
-  | { data: Insight[] }
+  | { data: Insight[]; platforms: PlatformConfig[] }
   | { error: { code: string; message: string; snippet?: string } };
+
+const PLATFORM_LEARN_DEFAULTS: Partial<
+  Record<
+    InsightPlatform,
+    {
+      label?: string;
+      learn?: string;
+    }
+  >
+> = {
+  LinkedIn: {
+    learn: "Frameworks and standards you can audit.",
+  },
+  YouTube: {
+    learn: "Full breakdowns, downside first.",
+  },
+  Instagram: {
+    learn: "Principles, discipline, stewardship.",
+  },
+  Facebook: {
+    learn: "Community and relationship continuity.",
+  },
+};
+
+function derivePlatformsFromInsights(insights: Insight[]): PlatformConfig[] {
+  const hasPlatform = new Set<InsightPlatform>();
+  for (const item of insights) {
+    if (item.platform) {
+      hasPlatform.add(item.platform);
+    }
+  }
+
+  const platforms: PlatformConfig[] = [];
+  VALID_PLATFORMS.forEach((platform, index) => {
+    if (!hasPlatform.has(platform)) return;
+    const defaults = PLATFORM_LEARN_DEFAULTS[platform] ?? {};
+    platforms.push({
+      platform,
+      label: defaults.label ?? platform,
+      learn: defaults.learn,
+      order: index + 1,
+    });
+  });
+
+  return platforms;
+}
 
 async function fetchMedia(): Promise<FetchMediaResult> {
   try {
@@ -61,13 +107,22 @@ async function fetchMedia(): Promise<FetchMediaResult> {
       ok?: boolean;
       items?: unknown[];
       error?: { code?: string; message?: string; snippet?: string };
+      platforms?: unknown;
     };
 
     if (data?.ok === true && Array.isArray(data.items)) {
       const normalized = (data.items as Partial<Insight>[])
         .map(normalizeInsight)
         .filter((i): i is Insight => i != null);
-      return { data: sortInsights(normalized) };
+      const sorted = sortInsights(normalized);
+
+      const apiPlatforms = Array.isArray(data.platforms)
+        ? (data.platforms as PlatformConfig[])
+        : [];
+      const platforms =
+        apiPlatforms.length > 0 ? apiPlatforms : derivePlatformsFromInsights(sorted);
+
+      return { data: sorted, platforms };
     }
 
     const apiError = data?.error;
@@ -75,10 +130,12 @@ async function fetchMedia(): Promise<FetchMediaResult> {
     const message = typeof apiError?.message === "string" ? apiError.message : "Insights API returned invalid or error response.";
     const snippet = typeof apiError?.snippet === "string" ? apiError.snippet : undefined;
 
-    if (isDev || allowFallback) return { data: getNormalizedFallback() };
+    if (isDev || allowFallback)
+      return { data: getNormalizedFallback(), platforms: derivePlatformsFromInsights(getNormalizedFallback()) };
     return { error: { code, message, snippet } };
   } catch {
-    if (isDev || allowFallback) return { data: getNormalizedFallback() };
+    if (isDev || allowFallback)
+      return { data: getNormalizedFallback(), platforms: derivePlatformsFromInsights(getNormalizedFallback()) };
     return {
       error: {
         code: "UPSTREAM",
@@ -127,13 +184,14 @@ export default async function InsightsPage({
   }
 
   const insights = result.data;
+  const platforms = result.platforms;
 
   return (
     <div className="space-y-16">
       <ContentIntro />
       <CategoryFilter currentCategory={category} selectedPlatform={platform} />
       <ReadingPathsSection category={category} platform={platform} insights={insights} />
-      <FormatsSection selectedCategory={category} />
+      <FormatsSection selectedCategory={category} platforms={platforms} />
       <VideoGrid insights={insights} />
       <FeaturedVideo insights={insights} />
     </div>

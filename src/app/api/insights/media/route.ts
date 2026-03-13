@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { normalizeReadingPath } from "@/types/insights";
+import { normalizeReadingPath, VALID_PLATFORMS, type PlatformConfig } from "@/types/insights";
 
 export const runtime = "nodejs";
 
@@ -27,6 +27,35 @@ function splitMulti(cell: unknown): string[] {
       .filter(Boolean);
   }
   return [];
+}
+
+function normalizePlatformConfig(raw: unknown): PlatformConfig | null {
+  if (!raw || typeof raw !== "object") return null;
+  const value = raw as Record<string, unknown>;
+
+  const platformRaw = value.platform != null ? String(value.platform).trim() : "";
+  if (!platformRaw) return null;
+
+  const matchedPlatform = VALID_PLATFORMS.find(
+    (p) => p.toLowerCase() === platformRaw.toLowerCase()
+  );
+  if (!matchedPlatform) return null;
+
+  const labelRaw = value.label != null ? String(value.label).trim() : "";
+  const learnRaw = value.learn != null ? String(value.learn).trim() : "";
+   const urlRaw = value.url != null ? String(value.url).trim() : "";
+
+  const orderRaw = value.order;
+  const orderNum = typeof orderRaw === "number" ? orderRaw : Number(orderRaw);
+  const order = Number.isFinite(orderNum) ? Number(orderNum) : 9999;
+
+  return {
+    platform: matchedPlatform,
+    label: labelRaw || undefined,
+    learn: learnRaw || undefined,
+    order,
+    url: urlRaw || undefined,
+  };
 }
 
 export async function GET() {
@@ -71,8 +100,19 @@ export async function GET() {
       });
     }
 
-    if (data != null && typeof data === "object" && (data as { ok?: boolean }).ok && Array.isArray((data as { items?: unknown }).items)) {
-      const items = ((data as { items: Record<string, unknown>[] }).items).map((item: Record<string, unknown>) => {
+    if (
+      data != null &&
+      typeof data === "object" &&
+      (data as { ok?: boolean }).ok &&
+      Array.isArray((data as { items?: unknown }).items)
+    ) {
+      const typed = data as {
+        ok: boolean;
+        items: Record<string, unknown>[];
+        platforms?: unknown;
+      };
+
+      const items = typed.items.map((item: Record<string, unknown>) => {
         const raw =
           splitMulti(item?.reading_paths).length > 0
             ? splitMulti(item?.reading_paths)
@@ -82,7 +122,24 @@ export async function GET() {
           .filter((v): v is NonNullable<typeof v> => Boolean(v));
         return { ...item, readingPaths };
       });
-      return NextResponse.json({ ...(data as object), items }, { headers: NO_STORE_HEADERS });
+
+      const rawPlatforms = Array.isArray(typed.platforms) ? typed.platforms : [];
+      const platforms = rawPlatforms
+        .map(normalizePlatformConfig)
+        .filter((p): p is PlatformConfig => p != null)
+        .sort((a, b) => {
+          const orderA = a.order ?? 9999;
+          const orderB = b.order ?? 9999;
+          if (orderA !== orderB) return orderA - orderB;
+          const indexA = VALID_PLATFORMS.indexOf(a.platform);
+          const indexB = VALID_PLATFORMS.indexOf(b.platform);
+          return indexA - indexB;
+        });
+
+      return NextResponse.json(
+        { ...(data as object), items, platforms },
+        { headers: NO_STORE_HEADERS }
+      );
     }
 
     return NextResponse.json(

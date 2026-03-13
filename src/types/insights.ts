@@ -10,6 +10,13 @@ export type InsightPlatform =
   | "Instagram"
   | "Facebook"
   | "Site";
+export interface PlatformConfig {
+  platform: InsightPlatform;
+  label?: string;
+  learn?: string;
+  order?: number;
+  url?: string;
+}
 export type InsightCategory =
   | "Transparency"
   | "Risk"

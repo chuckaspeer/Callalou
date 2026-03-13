@@ -3,7 +3,14 @@
  * When proxy is available, insights page uses API; on failure falls back to this.
  */
 
-import type { Insight, InsightCategory, InsightPlatform, ReadingPath, ReadingPathKey } from "@/types/insights";
+import type {
+  Insight,
+  InsightCategory,
+  InsightPlatform,
+  PlatformConfig,
+  ReadingPath,
+  ReadingPathKey,
+} from "@/types/insights";
 import {
   CATEGORIES,
   isValidReadingPathKey,
@@ -12,7 +19,7 @@ import {
 } from "@/types/insights";
 
 // Re-export types and constants for consumers that import from @/content/insights
-export type { Insight, InsightCategory, InsightPlatform, ReadingPath };
+export type { Insight, InsightCategory, InsightPlatform, PlatformConfig, ReadingPath };
 export type { InsightType, FeaturedSlot, InsightStatus } from "@/types/insights";
 export {
   CATEGORIES,
