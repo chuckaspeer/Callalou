@@ -98,7 +98,8 @@ async function fetchMedia(): Promise<FetchMediaResult> {
     const base = host ? `${protocol}://${host}` : process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "";
 
     if (!base) {
-      if (isDev || allowFallback) return { data: getNormalizedFallback() };
+      if (isDev || allowFallback)
+        return { data: getNormalizedFallback(), platforms: derivePlatformsFromInsights(getNormalizedFallback()) };
       return { error: { code: "CONFIG", message: "Unable to determine API base URL (missing host / VERCEL_URL)." } };
     }
 
