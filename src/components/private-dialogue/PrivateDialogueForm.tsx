@@ -29,6 +29,7 @@ const COMMITMENT_RANGES = [
 interface FormState {
   fullName: string;
   email: string;
+  phone: string;
   investorProfile: string;
   accreditedStatus: string;
   experience: string;
@@ -40,6 +41,7 @@ interface FormState {
 const initialFormState: FormState = {
   fullName: "",
   email: "",
+  phone: "",
   investorProfile: "",
   accreditedStatus: "",
   experience: "",
@@ -89,6 +91,7 @@ export function PrivateDialogueForm() {
       const payload = {
         full_name: formData.fullName.trim(),
         email: formData.email.trim(),
+        phone: formData.phone.trim() || undefined,
         investor_profile: formData.investorProfile.trim() || undefined,
         accredited_status: formData.accreditedStatus.trim() || undefined,
         experience: formData.experience.trim() || undefined,
@@ -198,6 +201,24 @@ export function PrivateDialogueForm() {
               onChange={handleChange}
               className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none ring-slate-900/10 focus:ring-2"
               placeholder="you@email.com"
+            />
+          </div>
+          <div className="space-y-2">
+            <label
+              className="text-sm font-medium text-slate-700"
+              htmlFor="phone"
+            >
+              Phone Number <span className="text-slate-500">(optional)</span>
+            </label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              autoComplete="tel"
+              value={formData.phone}
+              onChange={handleChange}
+              className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none ring-slate-900/10 focus:ring-2"
+              placeholder="(555) 555-5555"
             />
           </div>
           <div className="space-y-2">

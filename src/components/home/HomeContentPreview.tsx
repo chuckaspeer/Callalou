@@ -14,7 +14,7 @@ const features = [
     title: "Why Home Matters (Live)",
     type: "Event Series",
     summary:
-      "Fireside conversations hosted across Brooklyn, Atlanta, and Antigua spotlighting community architects.",
+      "Fireside conversations hosted across Brooklyn and Atlanta spotlighting community architects.",
   },
   {
     id: "feature-podcast",

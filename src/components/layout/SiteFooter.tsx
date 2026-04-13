@@ -28,7 +28,7 @@ export function SiteFooter() {
                 hello@callalouventures.com
               </Link>
               <span>•</span>
-              <span>Cincinnati &amp; Antigua</span>
+              <span>Cincinnati &amp; Atlanta</span>
             </div>
           </div>
           <div className="space-y-3 text-sm text-slate-300">

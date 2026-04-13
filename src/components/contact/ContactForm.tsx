@@ -72,7 +72,7 @@ export function ContactForm({ defaultInquiryType = "general" }: ContactFormProps
           <div className="space-y-1 text-sm text-slate-600">
             <p>Email: hello@callalouventures.com</p>
             <p>Social: @callalouventures</p>
-            <p>Locations: Cincinnati, Antigua, Atlanta</p>
+            <p>Locations: Cincinnati</p>
           </div>
         </div>
         <form
