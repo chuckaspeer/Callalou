@@ -11,18 +11,16 @@ export default function HomePage() {
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
           <div className="space-y-6">
             <h1 className="text-4xl font-semibold text-slate-900 sm:text-5xl">
-              A thoughtful approach to multifamily real estate
+              U.S. Multifamily Investing Built on Capital Discipline
             </h1>
             <p className="max-w-3xl text-lg text-slate-600">
-              Multifamily isn&apos;t about chasing deals. It&apos;s about
-              disciplined decisions that compound over time. Callaloo Ventures
-              approaches real estate with a long-term lens — grounded in
-              experience, operational understanding, and the belief that stable
-              housing is foundational to thriving communities and durable
-              outcomes.
+              We focus on durable cash flow, conservative leverage, and operational
+              execution across market cycles.
             </p>
             <p className="max-w-3xl text-base text-slate-500">
-              Underwriting standards and transparency trail published weekly.
+              We do not chase projected returns through structurally weak deals;
+              capital is preserved first, then compounded deliberately across
+              cycles.
             </p>
             <div className="grid gap-4 pt-4 sm:grid-cols-3">
               <div className="space-y-1">
@@ -51,6 +49,10 @@ export default function HomePage() {
             <div className="flex flex-wrap gap-4 pt-4">
               <CTAButton variant="primary" />
             </div>
+            <p className="max-w-3xl text-sm text-slate-500">
+              We build substantive relationships before discussing specific
+              opportunities.
+            </p>
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
             <Image
@@ -70,16 +72,22 @@ export default function HomePage() {
       <Section>
         <div className="space-y-4">
           <p className="text-sm uppercase tracking-[0.3em] text-slate-500">
-            Foundation
+            Investment approach
           </p>
           <h2 className="text-2xl font-semibold text-slate-900">
-            Our underwriting standard
+            Our Capital Framework
           </h2>
           <p className="max-w-3xl text-slate-600">
-            Our standards are explicit and documented. We publish a transparency
-            trail weekly so that expectations are clear and behavior is
-            auditable. How we evaluate risk, report to stakeholders, and align
-            incentives is stated in advance — not after the fact.
+            We approach multifamily investing through a disciplined framework
+            grounded in capital preservation and operational performance.
+          </p>
+          <p className="max-w-3xl text-slate-600">
+            Every opportunity is evaluated through downside protection,
+            structural integrity, and alignment across the capital stack.
+          </p>
+          <p className="max-w-3xl text-slate-600">
+            Cash flow is prioritized. Leverage is applied conservatively.
+            Decisions are made with full-cycle performance in mind.
           </p>
         </div>
       </Section>
@@ -91,14 +99,27 @@ export default function HomePage() {
             Platform overview
           </p>
           <h2 className="text-3xl font-semibold text-slate-900">
-            Multifamily real estate with purpose
+            Operational Discipline
           </h2>
           <p className="max-w-3xl text-slate-600">
-            Callaloo Ventures operates with a long-term, operator-led approach to
-            multifamily real estate. We focus on quality apartments and
-            community impact. Our work centers on properties that offer both
-            operational upside and the opportunity to strengthen the communities
-            they serve.
+            Multifamily assets are operating businesses.
+          </p>
+          <p className="max-w-3xl text-slate-600">
+            Performance is driven by execution: expense control, revenue
+            management, and consistent asset oversight.
+          </p>
+          <p className="max-w-3xl text-slate-600">
+            We prioritize margin integrity, structured capital deployment, and
+            systems that sustain performance through changing market conditions.
+          </p>
+          <p className="max-w-3xl text-slate-600">
+            Emil Brown is an investor focused on multifamily real estate through
+            the lens of capital discipline and operational performance.
+          </p>
+          <p className="max-w-3xl text-slate-600">
+            His background in accounting and operational leadership informs a
+            disciplined approach centered on capital protection, margin control,
+            and long-term asset stewardship.
           </p>
           <div className="flex flex-wrap gap-4 pt-4">
             <Link
@@ -122,16 +143,16 @@ export default function HomePage() {
         <div className="grid gap-6 sm:grid-cols-3">
           {[
             {
-              title: "Reporting cadence",
-              body: "Clear reporting expectations designed for calm periods and difficult ones.",
+              title: "Market & asset fundamentals",
+              body: "Population trends, employment diversity, and supply constraints are assessed to determine long-term demand stability. Basis relative to replacement cost, rent sustainability, and physical durability guide acquisition decisions.",
             },
             {
-              title: "Downside-first",
-              body: "Stress tests prioritize leverage, operating assumptions, and liquidity before upside.",
+              title: "Capital structure",
+              body: "Conservative leverage, fixed-rate debt preference, and liquidity reserves are central to risk management.",
             },
             {
-              title: "Alignment",
-              body: "Structures favor stewardship and durability over speed.",
+              title: "Operator alignment",
+              body: "Track record, capital commitment, and reporting transparency determine long-term partnership alignment.",
             },
           ].map((card) => (
             <div
@@ -151,19 +172,24 @@ export default function HomePage() {
       <Section background="muted" className="rounded-3xl">
         <div className="space-y-6">
           <p className="text-sm uppercase tracking-[0.3em] text-slate-500">
-            Who we align with
+            Private dialogue
           </p>
           <h2 className="text-3xl font-semibold text-slate-900">
-            Relationship-first, aligned by design
+            Begin a Private Dialogue
           </h2>
           <p className="max-w-3xl text-slate-600">
-            We do not advertise deals publicly. Any substantive discussion is
-            shared only after a relationship has been established and only
-            pursuant to applicable law. If you share our focus on
-            stewardship, transparency, and long-term value, we welcome a
-            conversation.
+            We engage with a limited number of investors who value discipline,
+            transparency, and long-term alignment.
+          </p>
+          <p className="max-w-3xl text-slate-600">
+            Discussions begin with understanding objectives before any
+            consideration of specific investments.
           </p>
           <CTAButton variant="primary" />
+          <p className="max-w-3xl text-sm text-slate-500">
+            We build substantive relationships before discussing specific
+            opportunities.
+          </p>
         </div>
       </Section>
     </div>
