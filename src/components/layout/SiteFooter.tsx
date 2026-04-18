@@ -22,10 +22,10 @@ export function SiteFooter() {
             </p>
             <div className="flex gap-4 text-sm text-slate-300">
               <Link
-                href="mailto:hello@callalouventures.com"
+                href="mailto:hello@callalooventures.com"
                 className="transition hover:text-white"
               >
-                hello@callalouventures.com
+                hello@callalooventures.com
               </Link>
               <span>•</span>
               <span>Cincinnati &amp; Atlanta</span>

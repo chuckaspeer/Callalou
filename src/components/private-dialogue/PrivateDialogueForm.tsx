@@ -159,7 +159,7 @@ export function PrivateDialogueForm() {
             automatically.
           </p>
           <div className="space-y-1 text-sm text-slate-600">
-            <p>Email: hello@callalouventures.com</p>
+            <p>Email: hello@callalooventures.com</p>
             <p>Locations: Cincinnati, Antigua</p>
           </div>
         </div>

@@ -70,7 +70,7 @@ export function ContactForm({ defaultInquiryType = "general" }: ContactFormProps
             We&apos;ll respond within 24–48 hours to discuss your goals, fit, or general inquiries.
           </p>
           <div className="space-y-1 text-sm text-slate-600">
-            <p>Email: hello@callalouventures.com</p>
+            <p>Email: hello@callalooventures.com</p>
             <p>Social: @callalouventures</p>
             <p>Locations: Cincinnati</p>
           </div>
