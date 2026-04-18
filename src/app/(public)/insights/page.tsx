@@ -1,4 +1,3 @@
-import { headers } from "next/headers";
 import {
   CATEGORIES,
   VALID_PLATFORMS,
@@ -8,6 +7,7 @@ import {
   type InsightCategory,
   type InsightPlatform,
 } from "@/content/insights";
+import { getMediaInsights } from "@/lib/insights/getMediaInsights";
 import type { Insight, PlatformConfig } from "@/types/insights";
 import { ContentIntro } from "@/components/content/ContentIntro";
 import { CategoryFilter } from "@/components/content/CategoryFilter";
@@ -92,48 +92,48 @@ function derivePlatformsFromInsights(insights: Insight[]): PlatformConfig[] {
 
 async function fetchMedia(): Promise<FetchMediaResult> {
   try {
-    const headersList = await headers();
-    const host = headersList.get("host") || "";
-    const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
-    const base = host ? `${protocol}://${host}` : process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "";
+    const result = await getMediaInsights();
 
-    if (!base) {
+    if (result.ok) {
+      const data = result.data as {
+        ok?: boolean;
+        items?: unknown[];
+        platforms?: unknown;
+      };
+      if (data?.ok === true && Array.isArray(data.items)) {
+        const normalized = (data.items as Partial<Insight>[])
+          .map(normalizeInsight)
+          .filter((i): i is Insight => i != null);
+        const sorted = sortInsights(normalized);
+
+        const apiPlatforms = Array.isArray(data.platforms)
+          ? (data.platforms as PlatformConfig[])
+          : [];
+        const platforms =
+          apiPlatforms.length > 0 ? apiPlatforms : derivePlatformsFromInsights(sorted);
+
+        return { data: sorted, platforms };
+      }
+    } else {
+      const apiError = result.error;
+      const code = typeof apiError?.code === "string" ? apiError.code : "UPSTREAM";
+      const message =
+        typeof apiError?.message === "string" ? apiError.message : "Insights API returned invalid or error response.";
+      const snippet = typeof apiError?.snippet === "string" ? apiError.snippet : undefined;
+
       if (isDev || allowFallback)
         return { data: getNormalizedFallback(), platforms: derivePlatformsFromInsights(getNormalizedFallback()) };
-      return { error: { code: "CONFIG", message: "Unable to determine API base URL (missing host / VERCEL_URL)." } };
+      return { error: { code, message, snippet } };
     }
-
-    const res = await fetch(`${base}/api/insights/media`, { cache: "no-store" });
-    const data = (await res.json()) as {
-      ok?: boolean;
-      items?: unknown[];
-      error?: { code?: string; message?: string; snippet?: string };
-      platforms?: unknown;
-    };
-
-    if (data?.ok === true && Array.isArray(data.items)) {
-      const normalized = (data.items as Partial<Insight>[])
-        .map(normalizeInsight)
-        .filter((i): i is Insight => i != null);
-      const sorted = sortInsights(normalized);
-
-      const apiPlatforms = Array.isArray(data.platforms)
-        ? (data.platforms as PlatformConfig[])
-        : [];
-      const platforms =
-        apiPlatforms.length > 0 ? apiPlatforms : derivePlatformsFromInsights(sorted);
-
-      return { data: sorted, platforms };
-    }
-
-    const apiError = data?.error;
-    const code = typeof apiError?.code === "string" ? apiError.code : "UPSTREAM";
-    const message = typeof apiError?.message === "string" ? apiError.message : "Insights API returned invalid or error response.";
-    const snippet = typeof apiError?.snippet === "string" ? apiError.snippet : undefined;
 
     if (isDev || allowFallback)
       return { data: getNormalizedFallback(), platforms: derivePlatformsFromInsights(getNormalizedFallback()) };
-    return { error: { code, message, snippet } };
+    return {
+      error: {
+        code: "UPSTREAM",
+        message: "Insights API returned invalid or error response.",
+      },
+    };
   } catch {
     if (isDev || allowFallback)
       return { data: getNormalizedFallback(), platforms: derivePlatformsFromInsights(getNormalizedFallback()) };
