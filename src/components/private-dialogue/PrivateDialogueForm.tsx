@@ -50,6 +50,42 @@ const initialFormState: FormState = {
   howDidYouHear: "",
 };
 
+/** Shown for network failures, unexpected payloads, and most server errors. */
+const GENERIC_SUBMIT_ERROR = "Something went wrong. Please try again.";
+
+function logIntroductionsFailure(context: {
+  httpStatus: number;
+  code?: string;
+  message?: string;
+}): void {
+  if (process.env.NODE_ENV === "production") return;
+  console.error("[PrivateDialogueForm] introductions request failed", context);
+}
+
+/**
+ * Maps API failures to safe, user-facing copy. Raw upstream messages are not
+ * shown (they may contain internal details); those are logged in development only.
+ */
+function userFacingMessageForApiFailure(
+  data: { error?: { code?: string; message?: string } },
+  httpStatus: number
+): string {
+  const code = data?.error?.code;
+  const raw =
+    typeof data?.error?.message === "string" ? data.error.message : "";
+
+  logIntroductionsFailure({ httpStatus, code, message: raw });
+
+  switch (code) {
+    case "BAD_REQUEST":
+      return "We couldn't send your request. Please check your information and try again.";
+    case "CONFIG":
+    case "UPSTREAM":
+    default:
+      return GENERIC_SUBMIT_ERROR;
+  }
+}
+
 export function PrivateDialogueForm() {
   const [formData, setFormData] = useState<FormState>(initialFormState);
   const [submitted, setSubmitted] = useState(false);
@@ -113,13 +149,12 @@ export function PrivateDialogueForm() {
         setSubmitted(true);
         return;
       }
-      setError(
-        (data?.error && typeof data.error.message === "string")
-          ? data.error.message
-          : "Something went wrong. Please try again."
-      );
+      setError(userFacingMessageForApiFailure(data, res.status));
     } catch {
-      setError("Something went wrong. Please try again.");
+      if (process.env.NODE_ENV !== "production") {
+        console.error("[PrivateDialogueForm] introductions request threw");
+      }
+      setError(GENERIC_SUBMIT_ERROR);
     } finally {
       setIsSubmitting(false);
     }
@@ -345,7 +380,15 @@ export function PrivateDialogueForm() {
             />
           </div>
           {error && (
-            <p className="text-sm text-red-600">{error}</p>
+            <p
+              id="private-dialogue-form-error"
+              role="alert"
+              aria-live="assertive"
+              aria-atomic="true"
+              className="text-sm text-red-600"
+            >
+              {error}
+            </p>
           )}
           <button
             type="submit"
