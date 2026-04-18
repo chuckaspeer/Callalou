@@ -209,7 +209,7 @@ export function ContactForm({ defaultInquiryType = "general" }: ContactFormProps
             />
           </div>
           <p className="text-xs text-slate-500">
-            We do not share your information. Communications are informational.
+          Your information may be processed using trusted third-party services. We do not sell your data.
           </p>
           {submitted ? (
             <p className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">

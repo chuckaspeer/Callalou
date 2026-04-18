@@ -160,7 +160,7 @@ export function PrivateDialogueForm() {
           </p>
           <div className="space-y-1 text-sm text-slate-600">
             <p>Email: hello@callalooventures.com</p>
-            <p>Locations: Cincinnati, Antigua</p>
+            <p>Locations: Cincinnati</p>
           </div>
         </div>
         <form
@@ -355,9 +355,10 @@ export function PrivateDialogueForm() {
             {isSubmitting ? "Sending…" : "Request Introduction"}
           </button>
           <p className="text-xs text-slate-500">
-            This site is informational only. We do not share your information
-            with third parties for marketing. Communications are confidential
-            and do not constitute advice, an offer, or a solicitation.
+            This site is informational only. Your information may be processed
+            using trusted third-party services to manage communications. We do
+            not sell your personal information. Communications are confidential
+            and do not constitute investment advice, an offer, or a solicitation.
           </p>
         </form>
       </div>
