@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://callalouventures.com"),
+  metadataBase: new URL("https://callalooventures.com"),
   title: {
     default: "Callaloo Ventures | Multifamily Real Estate",
     template: "%s | Callaloo Ventures",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "Callaloo Ventures | Multifamily Real Estate",
     description:
       "Callaloo Ventures: a long-term, operator-led approach to multifamily real estate. Quality apartments and community impact.",
-    url: "https://callalouventures.com",
+    url: "https://callalooventures.com",
     siteName: "Callaloo Ventures",
     type: "website",
   },
